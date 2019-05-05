@@ -1,0 +1,13 @@
+$ubuntu: 'Ubuntu', sans-serif;
+$open: 'Open Sans', sans-serif;
+
+$font-weight: (
+  'light':      300,
+  'regular':    400,
+  'medium':     500,
+  'semibold':   600,
+  'bold':       700,
+) !default;
+
+$font-text: $open;
+$font-title: $ubuntu;

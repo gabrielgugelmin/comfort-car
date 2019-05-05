@@ -1,0 +1,19 @@
+
+// https://www.oomphinc.com/notes/2015/12/easy-color-organization-with-sass/
+
+$palettes: (
+  mono: (
+    black:    #252525,
+    white:    #FFFFFF,
+  ),
+  orange: (
+    flamingo: #F15F22,
+  ),
+  gray: (
+    gray: #8F8F8F,
+    mine-shaft: #202020,
+    dove-gray: #696969,
+    cape-cod: #474949,
+    mercury: #E6E5E5,
+  )
+);
