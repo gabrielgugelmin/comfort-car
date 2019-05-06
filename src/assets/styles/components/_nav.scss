@@ -1,0 +1,43 @@
+.nav {
+  background: color(gray, mercury);
+  height: 100%;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  transform: translateX(100%);
+  transition: all .2s ease-in-out;
+  visibility: hidden;
+  width: 100%;
+  z-index: z("fixed");
+  padding: 100px 30px;
+
+  &__logo {
+    display: block;
+    margin: 0 auto 60px;
+    width: 370px;
+    max-width: 80%;
+  }
+
+  &__close {
+    background: no-repeat center/contain url(../img/close.svg) ;
+    color: transparent;
+    height: 20px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 20px;
+  }
+
+  &__legal {
+    text-align: center;
+    display: block;
+    font-size: 12px;
+    margin-top: 40px;
+  }
+
+  &--open {
+    opacity: 1;
+    transform: translateX(0);
+    visibility: visible;
+  }
+}

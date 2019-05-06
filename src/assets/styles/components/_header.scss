@@ -1,0 +1,27 @@
+.header {
+  padding: 60px 0;
+
+  > .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: inline-block;
+    width: 220px;
+  }
+
+  &__search {
+    background: no-repeat center url(../img/search.svg) ;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+
+  &__menu {
+    background: no-repeat center url(../img/menu.svg);
+    width: 24px;
+    height: 24px;
+  }
+}

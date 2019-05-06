@@ -1,0 +1,15 @@
+.menu {
+  text-align: center;
+
+  &__item {
+    margin-bottom: 30px;
+
+    > a {
+      font-family: $font-title;
+      text-transform: uppercase;
+      color: color(gray, mine-shaft);
+      font-size: 20px;
+      font-weight: fw("regular");
+    }
+  }
+}

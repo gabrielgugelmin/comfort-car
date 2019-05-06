@@ -1,0 +1,22 @@
+.button {
+  background: color(gray, gray);
+  border-radius: 30px;
+  font-weight: fw("bold");
+  color: color(mono, white);
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 15px 20px;
+  display: inline-block;
+
+  &--orange {
+    background: color(orange, flamingo);
+  }
+
+  &--green {
+    background: color(green, limeade);
+  }
+
+  &--large {
+    padding: 15px 40px;
+  }
+}

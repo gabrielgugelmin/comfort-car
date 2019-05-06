@@ -27,7 +27,7 @@ $(function () {
   // slider banner
   $('.js-banner-slider').slick({
     arrows: false,
-    dots: true,
+    dots: false,
   });
 
   // slider youtube
@@ -105,30 +105,27 @@ $(function () {
   });
 
   // Filtro produtos
-  if ($('.grid').length) {
-    var grid = new Muuri('.grid');
+  // if ($('.grid').length) {
+  //   var grid = new Muuri('.grid');
 
-    grid.filter('[data-produto="melhorador"]');
+  //   grid.filter('[data-produto="melhorador"]');
 
-    $('.js-melhoradores').on('click', function () {
-      grid.filter('[data-produto="melhorador"]');
-    });
+  //   $('.js-melhoradores').on('click', function () {
+  //     grid.filter('[data-produto="melhorador"]');
+  //   });
 
-    $('.js-linha').on('click', function () {
-      grid.filter('[data-produto="rustyk"]');
-    });
-  }
+  //   $('.js-linha').on('click', function () {
+  //     grid.filter('[data-produto="rustyk"]');
+  //   });
+  // }
 });
 
 function closeMenu() {
   $('.nav').removeClass('nav--open');
-  $('.js-trigger-nav').removeClass('menu-icon--open');
-  $('.menu__item').removeClass('menu__item--is-selected');
   $('body').removeClass('overflow-hidden');
 }
 
 function openMenu() {
-  $('.js-trigger-nav').addClass('menu-icon--open');
   $('.nav').addClass('nav--open');
   $('body').addClass('overflow-hidden');
 }
