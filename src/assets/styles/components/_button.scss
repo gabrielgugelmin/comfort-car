@@ -1,19 +1,32 @@
 .button {
   background: color(gray, gray);
   border-radius: 30px;
-  font-weight: fw("bold");
   color: color(mono, white);
-  text-transform: uppercase;
-  font-size: 12px;
-  padding: 15px 20px;
   display: inline-block;
+  font-size: 12px;
+  font-weight: fw("bold");
+  padding: 15px 20px;
+  text-transform: uppercase;
+  transition: background-color .25s ease-in-out;
+
+  &:hover {
+    background: darken(color(gray, gray), 10%);
+  }
 
   &--orange {
     background: color(orange, flamingo);
+
+    &:hover {
+      background: darken(color(orange, flamingo), 22%);
+    }
   }
 
   &--green {
     background: color(green, limeade);
+
+    &:hover {
+      background: darken(color(green, limeade), 5%);
+    }
   }
 
   &--large {

@@ -15,7 +15,7 @@ html, body {
 
   &-content{
     flex: 1;
-    @extend .container;
+    // @extend .container;
     padding: 0;
     position: relative;
   }
@@ -29,10 +29,156 @@ html, body {
 
 .diferencial {
   @include media(">=desktop") {
-    background: right center / auto no-repeat url("../img/quem-somos.jpg") color(gray, gallery);
+    background: right center / auto no-repeat url("../img/quem-somos.jpg") color(gray, mercury);
   }
 }
 
-.footer {
+.estoque {
+  padding-top: 15px;
 
+  > .container {
+    padding: 0;
+
+    @include media(">=tablet") {
+      padding: 0 15px;
+    }
+  }
+}
+
+.oportunidades {
+  padding-bottom: 0;
+
+  @include media(">=desktop") {
+    padding-bottom: 100px;
+  }
+
+  > .container {
+    padding: 0;
+
+    @include media(">=tablet") {
+      padding: 0 15px;
+    }
+  }
+
+  &-slider {
+    .car__img {
+      @include media(">=desktop") {
+        border-radius: 10px;
+        height: 580px;
+      }
+    }
+
+    .car__detail {
+      @include media(">=desktop") {
+        bottom: 100px;
+        padding: 20px 25px;
+        max-width: 435px;
+
+        p {
+          font-size: 22px;
+        }
+      }
+
+    }
+  }
+}
+
+.venda {
+  @include media(">=desktop") {
+    background: 40px bottom / 480px no-repeat url("../img/menina.jpg") color(gray, mercury);
+  }
+
+  @include media(">=larger") {
+    // background: 100px bottom / 540px no-repeat url("../img/menina.jpg") color(gray, mercury);
+
+    background-position: 110px bottom;
+    background-size: 520px;
+  }
+
+  &__content {
+    padding-top: 50px;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+
+    @include media(">=desktop") {
+      justify-content: flex-start;
+      margin-left: 550px;
+    }
+
+    @include media(">=larger") {
+      margin-left: 640px;
+    }
+  }
+
+  .section__title,
+  .section__text {
+    @include media(">=desktop") {
+      text-align: left;
+    }
+  }
+
+  .section__text {
+    @include media(">=desktop") {
+      max-width: 740px;
+    }
+  }
+
+  .media {
+    @include media(">=desktop") {
+      &:nth-child(1) {
+        margin-left: 200px;
+      }
+
+      &:nth-child(2) {
+        margin-left: 330px;
+      }
+
+      &:nth-child(3) {
+        margin-left: 470px;
+      }
+    }
+  }
+
+  .button {
+    @include media(">=desktop") {
+      padding: 20px 80px;
+      font-size: 18px;
+    }
+  }
+}
+
+.marcas {
+  &__content {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 50px;
+
+    @include media(">=desktop") {
+      padding-top: 85px;
+    }
+
+    img {
+      display: block;
+      margin: 0 auto 50px;
+      width: 54px;
+
+      @include media(">=desktop") {
+        margin-bottom: 90px;
+        width: 90px;
+      }
+    }
+  }
+
+  &__item {
+    width: 33%;
+
+    @include media(">=desktop") {
+      width: 20%;
+    }
+  }
 }

@@ -3,6 +3,12 @@
   text-align: center;
   padding: 45px 0;
 
+  @include media(">=desktop") {
+    padding-bottom: 110px;
+    margin-bottom: 130px;
+    position: relative;
+  }
+
   &__title {
     font-family: $font-title;
     text-transform: uppercase;
@@ -10,6 +16,10 @@
     line-height: 1.2;
     margin-bottom: 20px;
     padding: 0 30px;
+
+    @include media(">=desktop") {
+      font-size: 32px;
+    }
   }
 
   &__text {
@@ -17,20 +27,66 @@
     font-weight: fw("light");
     line-height: 1.4;
     padding: 0 30px;
+
+    @include media(">=desktop") {
+      font-size: 22px;
+      margin: 0 auto 20px;
+      max-width: 530px;
+    }
   }
 
   &__footer {
+    align-items: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     margin-top: 30px;
-
-    img {
-      display: none;
-    }
+    padding: 0 30px;
 
     .button {
       &:first-child {
-        margin-right: 20px;
+        margin-bottom: 15px;
+      }
+    }
+
+    @include media(">=375px") {
+      flex-direction: row;
+
+      .button {
+        &:first-child {
+          margin-right: 20px;
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    @include media(">=desktop") {
+      bottom: -105px;
+      left: 0;
+      position: absolute;
+      right: 0;
+
+      .button {
+        font-size: 18px;
+        padding: 20px 30px;
+
+        &:first-child {
+          margin-right: 10px;
+          margin-bottom: 0;
+        }
+
+        &:last-child {
+          margin-left: 20px;
+        }
+      }
+    }
+
+    img {
+      display: none;
+
+      @include media(">=desktop") {
+        display: block;
+        max-width: 410px;
       }
     }
   }

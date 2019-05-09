@@ -2,14 +2,20 @@
   background: color(gray, mercury);
   height: 100%;
   opacity: 0;
+  padding: 100px 30px;
   position: fixed;
+  right: 0;
   top: 0;
   transform: translateX(100%);
-  transition: all .2s ease-in-out;
+  transition: all .35s ease-in-out;
   visibility: hidden;
   width: 100%;
   z-index: z("fixed");
-  padding: 100px 30px;
+
+  @include media(">=tablet") {
+    max-width: 300px;
+    box-shadow: 0 -2px 5px rgba(color(mono, black), .3);
+  }
 
   &__logo {
     display: block;
@@ -21,6 +27,7 @@
   &__close {
     background: no-repeat center/contain url(../img/close.svg) ;
     color: transparent;
+    cursor: pointer;
     height: 20px;
     position: absolute;
     right: 20px;

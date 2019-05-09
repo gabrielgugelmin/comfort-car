@@ -1,0 +1,18 @@
+.overlay {
+  background-color: color(mono, black);
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: -1;
+  transition: opacity .3s ease-in-out;
+
+  &--open {
+    opacity: .5;
+    visibility: visible;
+    z-index: z("absolute");
+  }
+}

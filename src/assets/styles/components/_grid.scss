@@ -1,48 +1,31 @@
 .grid {
-  display: flex;
-  flex-wrap: wrap;
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   &__item {
-    display: block;
-    text-align: center;
-    position: relative;
     width: 100%;
 
     @include media(">=tablet") {
       width: 50%;
     }
-  }
 
-  &__img {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    height: 340px;
-    display: block;
-  }
-
-  &__detail {
-    background: rgba(color(gray, mine-shaft), .7);
-    border-radius: 30px;
-    padding: 15px 25px;
-    max-width: 90%;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-    position: absolute;
-    bottom: 85px;
-
-    p {
-      color: color(mono, white);
-      text-transform: uppercase;
-      font-family: $font-title;
+    @include media(">=desktop") {
+      width: 33.333%;
     }
   }
 
-  .button {
-    position: relative;
-    margin: 0 auto 10px;
-    bottom: 20px;
-    font-size: 16px;
+  &__footer {
+    display: flex;
+    justify-content: center;
+
+    @include media(">=desktop") {
+      padding-top: 80px;
+      .button {
+        font-size: 18px;
+        padding: 20px 30px;
+      }
+    }
   }
 }

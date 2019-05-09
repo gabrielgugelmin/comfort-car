@@ -1,0 +1,47 @@
+.car {
+  display: block;
+  text-align: center;
+  position: relative;
+  width: 100%;
+
+  &__img {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 320px;
+    display: block;
+
+    @include media(">=desktop") {
+      height: 240px;
+    }
+  }
+
+  &__detail {
+    background: rgba(color(gray, mine-shaft), .7);
+    border-radius: 60px;
+    bottom: 85px;
+    left: 0;
+    margin: 0 auto;
+    max-width: 70%;
+    padding: 15px 25px;
+    position: absolute;
+    right: 0;
+
+    @include media(">=desktop") {
+      max-width: 300px;
+    }
+
+    p {
+      color: color(mono, white);
+      font-family: $font-title;
+      text-transform: uppercase;
+    }
+  }
+
+  .button {
+    position: relative;
+    margin: 0 auto 10px;
+    bottom: 20px;
+    font-size: 16px;
+  }
+}

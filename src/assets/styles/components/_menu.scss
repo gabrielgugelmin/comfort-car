@@ -5,11 +5,18 @@
     margin-bottom: 30px;
 
     > a {
-      font-family: $font-title;
-      text-transform: uppercase;
       color: color(gray, mine-shaft);
+      font-family: $font-title;
       font-size: 20px;
       font-weight: fw("regular");
+      text-transform: uppercase;
+      transition: color .25s ease-in-out;
+    }
+
+    &:hover {
+      .menu__link {
+        color: color(orange, flamingo);
+      }
     }
   }
 }

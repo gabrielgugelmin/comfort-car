@@ -30,6 +30,12 @@ $(function () {
     dots: false,
   });
 
+  // slider oportunidades
+  $('.js-slider-oportunidades').slick({
+    arrows: false,
+    dots: false,
+  });
+
   // slider youtube
   $('.js-video-slider').slick({
     infinite: true,
@@ -123,11 +129,13 @@ $(function () {
 function closeMenu() {
   $('.nav').removeClass('nav--open');
   $('body').removeClass('overflow-hidden');
+  $('.overlay').removeClass('overlay--open')
 }
 
 function openMenu() {
   $('.nav').addClass('nav--open');
   $('body').addClass('overflow-hidden');
+  $('.overlay').addClass('overlay--open')
 }
 
 function viewport() {
