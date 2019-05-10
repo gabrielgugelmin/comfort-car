@@ -153,7 +153,6 @@ $(function () {
     var href = ($('.js-grid').data('link')) || '#!'; // Define a url do botão à direita
 
     if ($container.is('.js-grid')) {
-      console.log('uw');
       // Inclui o botão para carregar mais itens
       footer.append('<div class="button-group"><button class="button js-load-more">' + labelButtonPrimary + '</button><a class="button button--gray" href=' + href + '>' + labelButtonSecondary +'</a></div>');
     }
@@ -290,7 +289,6 @@ $(function () {
 });
 
 function getItemLayout(item) {
-  console.log(item);
   return `<a href="#!" class="grid__item car ${slugify(item.brand)} ${slugify(item.modelo)} ${slugify(item.ano)}" data-valor=${item.preco}>
     <div class="car__img" style="background-image: url(${item.img})"></div>
     <div class="car__detail">
