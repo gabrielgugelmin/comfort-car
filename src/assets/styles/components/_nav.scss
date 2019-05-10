@@ -2,7 +2,7 @@
   background: color(gray, mercury);
   height: 100%;
   opacity: 0;
-  padding: 100px 30px;
+  padding: 70px 30px;
   position: fixed;
   right: 0;
   top: 0;
@@ -11,6 +11,7 @@
   visibility: hidden;
   width: 100%;
   z-index: z("fixed");
+  overflow: auto;
 
   @include media(">=tablet") {
     max-width: 300px;

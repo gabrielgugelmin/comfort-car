@@ -66,17 +66,19 @@ $(function () {
   // INSTAGRAM
   var device = checkWindowWidth();
   if ($('.instafeed').length) {
-    var feed = new Instafeed({
-      accessToken: 'asdasd',
-      clientId: 'asdasd',
-      get: 'user',
-      limit: (device === 'mobile') ? 6 : 5,
-      resolution: 'low_resolution',
-      tagName: 'asdasd',
-      template: '<a target="_blank" class="instafeed__item" style="background-image: url({{image}})" href="{{link}}"><div class="instafeed__content"><div class="instafeed__info"><span class="instafeed__icon instafeed__icon--heart">{{likes}}</span><span class="instafeed__icon instafeed__icon--comment">{{comments}}</span></div></div></a>',
-      userId: 'asdasd'
-    });
-    feed.run();
+    if (device === 'desktop') {
+      var feed = new Instafeed({
+        accessToken: 'aa',
+        clientId: 'aa',
+        get: 'user',
+        limit: 5,
+        resolution: 'low_resolution',
+        tagName: 'aa',
+        template: '<a target="_blank" class="instafeed__item" style="background-image: url({{image}})" href="{{link}}"><div class="instafeed__content"><div class="instafeed__info"><span class="instafeed__icon instafeed__icon--heart">{{likes}}</span><span class="instafeed__icon instafeed__icon--comment">{{comments}}</span></div></div></a>',
+        userId: 'aa'
+      });
+      feed.run();
+    }
   }
 
   // SCROLLBAR
@@ -110,21 +112,194 @@ $(function () {
     e.preventDefault();
   });
 
-  // Filtro produtos
-  // if ($('.grid').length) {
-  //   var grid = new Muuri('.grid');
+  if ($('.js-grid').length) {
+    getItems();
+  }
 
-  //   grid.filter('[data-produto="melhorador"]');
+  function initIsotope() {
+    var qsRegex;
 
-  //   $('.js-melhoradores').on('click', function () {
-  //     grid.filter('[data-produto="melhorador"]');
-  //   });
+    var marcasFilter;
+    var modelosFilter;
+    var anosFilter;
+    var precosFilter;
 
-  //   $('.js-linha').on('click', function () {
-  //     grid.filter('[data-produto="rustyk"]');
-  //   });
-  // }
+
+    // init Isotope
+    var $container = $('.js-grid').isotope({
+      itemSelector: '.grid__item',
+      layoutMode: 'fitRows',
+      getSortData: {
+        valor: '[data-valor] parseInt',
+      },
+      filter: function () {
+        var $this = $(this);
+        var searchResult = qsRegex ? $this.text().match(qsRegex) : true;
+
+        marcasResult = marcasFilter ? $this.is(marcasFilter) : true;
+        modelosResult = modelosFilter ? $this.is(modelosFilter) : true;
+        anosResult = anosFilter ? $this.is(anosFilter) : true;
+        precosResult = precosFilter ? $this.is(precosFilter) : true;
+        return searchResult && marcasResult && modelosResult && anosResult && precosResult;
+      }
+    });
+
+    var initShow = ($('.js-grid').data('init-show')) || 6; // Número de itens exibidos ao carregar
+    var counter = initShow; // Número de itens a serem carregados quando clicar no botão Carregar Mais
+    var iso = $container.data('isotope'); // Instância do Isotope
+    var footer = $('.grid__footer');
+    var labelButtonPrimary = ($('.js-grid').data('label-primary')) || 'carregar'; // Define a label do botão à esquerda
+    var labelButtonSecondary = ($('.js-grid').data('label-secondary')) || 'entrar em contato'; // Define a label do botão à direita
+    var href = ($('.js-grid').data('link')) || '#!'; // Define a url do botão à direita
+
+    if ($container.is('.js-grid')) {
+      console.log('uw');
+      // Inclui o botão para carregar mais itens
+      footer.append('<div class="button-group"><button class="button js-load-more">' + labelButtonPrimary + '</button><a class="button button--gray" href=' + href + '>' + labelButtonSecondary +'</a></div>');
+    }
+
+    // Carrega os itens iniciais
+    loadMore(initShow);
+
+    function loadMore(toShow) {
+      // Oculta os itens que ultrapassaram o limite do initShow ou counter
+      var elems = $container.isotope('getFilteredItemElements');
+      $container.find(".hidden").removeClass("hidden");
+      var hiddenElems = iso.filteredItems.slice(toShow, elems.length).map(function (item) {
+        return item.element;
+      });
+
+      $(hiddenElems).addClass('hidden');
+      $container.isotope('layout');
+
+      // Se não tiver mais itens a serem carregados, oculta o botão Carregar Mais
+      if (hiddenElems.length == 0 && $container.is('.js-grid')) {
+        $('.js-load-more').attr("disabled", "disabled");
+      } else {
+        $('.js-load-more').removeAttr("disabled");
+      };
+
+      $('.js-load-more').removeClass('is-loading');
+    }
+
+    // Carrega mais itens
+    $(".js-load-more").click(function () {
+      $(this).addClass('is-loading');
+      counter = counter + initShow;
+
+      loadMore(counter);
+    });
+
+    // Filtra os itens pelo Estado
+    $('#estados').on('change', function () {
+      estadosFilter = this.value;
+      loadMore(1000);
+      $container.isotope();
+    });
+
+    // Filtra os itens pela Cidade
+    $('#cidades').on('change', function () {
+      cidadesFilter = this.value;
+      loadMore(1000);
+      $container.isotope();
+    });
+
+    // Filtra os itens pela Região
+    $('#regioes').on('change', function () {
+      regioesFilter = this.value;
+      loadMore(1000);
+      $container.isotope();
+    });
+
+    // Filtra os itens pela Cidade
+    $('#bairros').on('change', function () {
+      bairrosFilter = this.value;
+      loadMore(1000);
+      $container.isotope();
+    });
+
+    // Filtra os itens pela Marca
+    $('#marcas').on('change', function () {
+      marcasFilter = this.value;
+      loadMore(1000);
+      $container.isotope();
+    });
+
+    // Filtra os itens pelo Modelo
+    $('#modelos').on('change', function () {
+      modelosFilter = this.value;
+      loadMore(1000);
+      $container.isotope();
+    });
+
+    // Filtra os itens por Ano
+    $('#anos').on('change', function () {
+      anosFilter = this.value;
+      loadMore(1000);
+      $container.isotope();
+    });
+
+    // Ordena os itens por ordem crescente ou decrescente
+    $('#precos').on('change', function () {
+      var filterValue = this.value;
+      var order = $(this).find(":selected").data('ordem');
+      loadMore(1000);
+      $container.isotope({
+        sortBy: filterValue,
+        sortAscending: order,
+      });
+    });
+
+    // Filtra os itens de acordo com o digitado na busca
+    var $quicksearch = $('.quicksearch').keyup( debounce( function() {
+      qsRegex = new RegExp($quicksearch.val(), 'gi');
+      $container.isotope();
+      loadMore(1000);
+    }, 200));
+
+    function debounce(fn, threshold) {
+      var timeout;
+      return function debounced() {
+        if (timeout) {
+          clearTimeout(timeout);
+        }
+        function delayed() {
+          fn();
+          timeout = null;
+        }
+        timeout = setTimeout(delayed, threshold || 100);
+      }
+    }
+  }
+
+  function getItems() {
+    $.getJSON("/assets/json/cars.json", function (data) {})
+    .fail(function (data) {
+    }).done(function (data) {
+      console.log(data);
+      $.each(data, function (index, item) {
+        if(item.id) {
+          // console.log(item);
+          var $box = getItemLayout(item);
+        }
+        $(".js-grid").append($box);
+      });
+
+      initIsotope();
+    });
+  }
 });
+
+function getItemLayout(item) {
+  console.log(item);
+  return `<a href="#!" class="grid__item car">
+    <div class="car__img" style="background-image: url(${item.img})"></div>
+    <div class="car__detail">
+      <p>${item.title}</p>
+    </div>
+    <span class="button button--green button--large">conferir</span>
+  </a>`;
+}
 
 function closeMenu() {
   $('.nav').removeClass('nav--open');

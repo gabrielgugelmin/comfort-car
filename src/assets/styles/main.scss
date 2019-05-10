@@ -11,6 +11,10 @@ html, body {
   padding: 0;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .page {
 
   &-content{
@@ -18,6 +22,11 @@ html, body {
     // @extend .container;
     padding: 0;
     position: relative;
+    margin-top: 87px;
+
+    @include media(">=desktop") {
+      margin-top: 150px;
+    }
   }
 
   &-wrapper {
@@ -93,6 +102,10 @@ html, body {
 
     background-position: 110px bottom;
     background-size: 520px;
+  }
+
+  @include media(">=1700px") {
+    background-position: 25% bottom;
   }
 
   &__content {
@@ -179,6 +192,34 @@ html, body {
 
     @include media(">=desktop") {
       width: 20%;
+    }
+  }
+}
+
+.instagram {
+  background: linear-gradient(180deg, color(mono, white) 50%, color(gray, mercury) 50%);
+  padding: 0;
+
+  @include media(">=desktop") {
+    background: linear-gradient(180deg, color(mono, white) 60%, color(gray, mercury) 60%);
+    display: block;
+    padding: 55px 0;
+  }
+
+  .section__title {
+    display: none;
+
+    @include media(">=desktop") {
+      display: block;
+    }
+  }
+
+  &__img {
+    display: block;
+    margin: 0 auto;
+
+    @include media(">=desktop") {
+      display: none;
     }
   }
 }
