@@ -14,7 +14,7 @@
   overflow: auto;
 
   @include media(">=tablet") {
-    max-width: 300px;
+    max-width: 380px;
     box-shadow: 0 -2px 5px rgba(color(mono, black), .3);
   }
 
@@ -23,6 +23,10 @@
     margin: 0 auto 60px;
     width: 370px;
     max-width: 80%;
+
+    @include media(">=desktop") {
+      width: 320px;
+    }
   }
 
   &__close {
@@ -31,7 +35,7 @@
     cursor: pointer;
     height: 20px;
     position: absolute;
-    right: 20px;
+    right: 30px;
     top: 20px;
     width: 20px;
   }

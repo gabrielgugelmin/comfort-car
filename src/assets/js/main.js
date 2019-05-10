@@ -276,7 +276,6 @@ $(function () {
     $.getJSON("/assets/json/cars.json", function (data) {})
     .fail(function (data) {
     }).done(function (data) {
-      console.log(data);
       $.each(data, function (index, item) {
         if(item.id) {
           // console.log(item);
@@ -292,12 +291,12 @@ $(function () {
 
 function getItemLayout(item) {
   console.log(item);
-  return `<a href="#!" class="grid__item car">
+  return `<a href="#!" class="grid__item car ${slugify(item.brand)} ${slugify(item.modelo)} ${slugify(item.ano)}" data-valor=${item.preco}>
     <div class="car__img" style="background-image: url(${item.img})"></div>
     <div class="car__detail">
       <p>${item.title}</p>
     </div>
-    <span class="button button--green button--large">conferir</span>
+    <span class="button button--large">conferir</span>
   </a>`;
 }
 
@@ -357,4 +356,22 @@ function smoothScroll(link, event) {
 			window.location.hash = hash;
 		});
 	}
+}
+
+function slugify(text) {
+  text = text.replace(/^\s+|\s+$/g, ''); // trim
+  text = text.toLowerCase();
+
+  // remove accents, swap ñ for n, etc
+  var from = "ãàáäâẽèéëêìíïîõòóöôùúüûñç·/_,:;";
+  var to   = "aaaaaeeeeeiiiiooooouuuunc------";
+  for (var i=0, l=from.length ; i<l ; i++) {
+    text = text.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+  }
+
+  text = text.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+    .replace(/\s+/g, '-') // collapse whitespace and replace by -
+    .replace(/-+/g, '-'); // collapse dashes
+
+  return text;
 }

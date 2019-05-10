@@ -3,6 +3,26 @@
 
   &__control {
     margin-bottom: 10px;
+    position: relative;
+
+    &--icon {
+      .input {
+        padding-right: 60px;
+      }
+
+      button {
+        background-color: transparent;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 24px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
   }
 
   &__input {
@@ -25,6 +45,11 @@
       textarea#{&} {
         resize: none;
         height: 125px;
+      }
+
+      select#{&} {
+        padding-right: 30px;
+        background: right 10px center / 16px no-repeat url(../img/sort-down.svg) color(mono, white);
       }
     }
 

@@ -100,6 +100,11 @@ gulp.task('setup-src', function() {
   }
 
   var text = data.join("\n");
+  var build = './build';
+
+  if (!fs.existsSync(build)){
+    fs.mkdirSync(build);
+  }
   fs.writeFile('build/index.html', text, function (err) {
     if (err) throw err;
   });

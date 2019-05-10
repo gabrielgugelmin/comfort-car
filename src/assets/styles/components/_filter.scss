@@ -1,0 +1,15 @@
+.grid-filter {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+
+	&__input {
+		@extend .form__input;
+
+		@include placeholder {
+			font-weight: fw("bold");
+			color: red;
+		}
+		padding: 5px 10px;
+	}
+}
