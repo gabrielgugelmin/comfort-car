@@ -4,6 +4,7 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	padding: 0 $grid-gutter;
+	margin-bottom: 50px ;
 
 	@include media(">=tablet") {
 		padding: 0;
@@ -18,24 +19,25 @@
 
 		@include placeholder {
 			font-weight: fw("bold");
-			color: red;
+			font-style: normal;
+			text-transform: uppercase;
 		}
-		padding: 10px 10px;
-		// margin: 0 5px;
+		padding: 15px 20px;
 		margin-bottom: 10px;
-		// flex: 1;
+		font-weight: fw("bold");
 		width: calc(50% - 5px);
+		text-transform: uppercase;
 
 		&:first-child {
 			margin-left: 0;
+			text-transform: none;
 		}
 
 		&:last-child {
 			margin-right: 0;
 		}
 
-		@include media(">=tablet", "<desktop") {
-
+		@include media("<desktop") {
 			&:nth-child(even) {
 				margin-right: 10px;
 			}
@@ -44,19 +46,33 @@
 		@include media(">=desktop") {
 			margin-bottom: 0;
 			margin-right: 15px;
-			width: calc((100% / 5) - 15px);
+			width: calc((100% / 5) - 45px);
+		}
+
+		@include media(">=larger") {
+			width: calc((100% / 5) - 29px);
 		}
 	}
 
 	&__search {
-		flex-grow: 1;
+		font-style: normal;
 		width: 100%;
+
+		.form__input {
+			padding-top: 15px;
+			padding-bottom: 15px;
+
+			@include placeholder {
+				font-weight: fw("bold");
+				font-style: normal;
+			}
+		}
 
 		@include media(">=desktop") {
 			// flex-grow: 1.2;
 			margin-bottom: 0;
 			margin-right: 25px;
-			width: calc(20% - 25px);
+			width: 295px;
 		}
 	}
 }

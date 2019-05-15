@@ -34,6 +34,17 @@ $(function () {
   $('.js-slider-oportunidades').slick({
     arrows: false,
     dots: false,
+    mobileFirst: true,
+    responsive: [
+      {
+        breakpoint: 767,
+        settings: {
+          arrows: true,
+          prevArrow: '<button type="button" class="oportunidades-slider__arrow oportunidades-slider__arrow--prev"></button>',
+          nextArrow: '<button type="button" class="oportunidades-slider__arrow oportunidades-slider__arrow--next"></button>',
+        }
+      },
+    ]
   });
 
   // slider youtube
@@ -64,22 +75,22 @@ $(function () {
   });
 
   // INSTAGRAM
-  var device = checkWindowWidth();
-  if ($('.instafeed').length) {
-    if (device === 'desktop') {
-      var feed = new Instafeed({
-        accessToken: 'aa',
-        clientId: 'aa',
-        get: 'user',
-        limit: 5,
-        resolution: 'low_resolution',
-        tagName: 'aa',
-        template: '<a target="_blank" class="instafeed__item" style="background-image: url({{image}})" href="{{link}}"><div class="instafeed__content"><div class="instafeed__info"><span class="instafeed__icon instafeed__icon--heart">{{likes}}</span><span class="instafeed__icon instafeed__icon--comment">{{comments}}</span></div></div></a>',
-        userId: 'aa'
-      });
-      feed.run();
-    }
-  }
+  // var device = checkWindowWidth();
+  // if ($('.instafeed').length) {
+  //   if (device === 'desktop') {
+  //     var feed = new Instafeed({
+  //       accessToken: 'aa',
+  //       clientId: 'aa',
+  //       get: 'user',
+  //       limit: 5,
+  //       resolution: 'low_resolution',
+  //       tagName: 'aa',
+  //       template: '<a target="_blank" class="instafeed__item" style="background-image: url({{image}})" href="{{link}}"><div class="instafeed__content"><div class="instafeed__info"><span class="instafeed__icon instafeed__icon--heart">{{likes}}</span><span class="instafeed__icon instafeed__icon--comment">{{comments}}</span></div></div></a>',
+  //       userId: 'aa'
+  //     });
+  //     feed.run();
+  //   }
+  // }
 
   // SCROLLBAR
   if ($('.js-scrollbar').length > 0) {
@@ -148,13 +159,13 @@ $(function () {
     var counter = initShow; // Número de itens a serem carregados quando clicar no botão Carregar Mais
     var iso = $container.data('isotope'); // Instância do Isotope
     var footer = $('.grid__footer');
-    var labelButtonPrimary = ($('.js-grid').data('label-primary')) || 'carregar'; // Define a label do botão à esquerda
+    var labelButtonPrimary = ($('.js-grid').data('label-primary')) || 'carregar mais'; // Define a label do botão à esquerda
     var labelButtonSecondary = ($('.js-grid').data('label-secondary')) || 'entrar em contato'; // Define a label do botão à direita
     var href = ($('.js-grid').data('link')) || '#!'; // Define a url do botão à direita
 
     if ($container.is('.js-grid')) {
       // Inclui o botão para carregar mais itens
-      footer.append('<div class="button-group"><button class="button js-load-more">' + labelButtonPrimary + '</button><a class="button button--gray" href=' + href + '>' + labelButtonSecondary +'</a></div>');
+      footer.append('<div class="button-group"><button class="button js-load-more">' + labelButtonPrimary + '</button></div>');
     }
 
     // Carrega os itens iniciais
@@ -173,9 +184,9 @@ $(function () {
 
       // Se não tiver mais itens a serem carregados, oculta o botão Carregar Mais
       if (hiddenElems.length == 0 && $container.is('.js-grid')) {
-        $('.js-load-more').attr("disabled", "disabled");
+        $('.js-load-more').addClass("hidden");
       } else {
-        $('.js-load-more').removeAttr("disabled");
+        $('.js-load-more').removeClass("hidden");
       };
 
       $('.js-load-more').removeClass('is-loading');

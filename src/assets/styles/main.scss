@@ -34,6 +34,29 @@ html, body {
     flex-direction: column;
     min-height: 100%;
   }
+
+  &__header {
+    background-color: color(gray, mercury);
+    padding: 35px 0;
+    margin-bottom: 25px;
+
+    @include media(">=desktop") {
+      margin-bottom: 45px;
+    }
+
+    h1  {
+      font-size: 26px;
+      font-weight: fw("bold");
+      line-height: 1.4;
+      text-align: center;
+      text-transform: uppercase;
+      margin: 0;
+
+      @include media(">=desktop") {
+        font-size: 32px;
+      }
+    }
+  }
 }
 
 .diferencial {
@@ -88,6 +111,50 @@ html, body {
         }
       }
 
+    }
+
+    &__arrow {
+      background: transparent;
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 14px;
+      z-index: z("absolute");
+
+      @include media(">=tablet") {
+        height: 42px;
+        width: 30px;
+      }
+
+      @include media(">=desktop") {
+        height: 62px;
+        width: 30px;
+      }
+
+      &--prev {
+        background: center / contain no-repeat url("../img/arrow-left.png");
+
+        @include media(">=tablet") {
+          left: -35px;
+        }
+
+        @include media(">=larger") {
+          left: -65px;
+        }
+      }
+
+      &--next {
+        background: center / contain no-repeat url("../img/arrow-right.png");
+
+        @include media(">=tablet") {
+          right: -35px;
+        }
+
+        @include media(">=larger") {
+          right: -65px;
+        }
+      }
     }
   }
 }
@@ -220,6 +287,83 @@ html, body {
 
     @include media(">=desktop") {
       display: none;
+    }
+  }
+}
+
+.sobre {
+  &__items {
+    padding-top: 60px;
+
+    @include media(">=desktop") {
+      padding-top: 115px;
+    }
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+
+    &--right {
+      flex-direction: row-reverse;
+      text-align: right;
+
+      .sobre__content {
+
+        @include media(">=desktop") {
+          padding-right: 40px;
+        }
+      }
+    }
+  }
+
+  &__img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 200px;
+    width: 100%;
+
+    @include media(">=tablet") {
+      height: 350px;
+      max-width: 390px;
+      flex: .6;
+    }
+  }
+
+  &__content {
+    padding: 25px 0 0 0;
+
+    @include media(">=tablet") {
+      padding: 0;
+      flex: 1;
+    }
+
+    @include media(">=desktop") {
+      padding-left: 40px;
+    }
+  }
+
+  &__title {
+    font-family: $font-title;
+    font-size: 22px;
+    font-weight: fw("bold");
+    margin-bottom: 15px;
+    text-transform: uppercase;
+
+    @include media(">=desktop") {
+      font-size: 32px;
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+    font-weight: fw("light");
+    line-height: 1.63;
+
+    @include media(">=desktop") {
+      font-size: 22px;
     }
   }
 }
