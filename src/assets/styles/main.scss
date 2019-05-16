@@ -56,6 +56,10 @@ html, body {
         font-size: 32px;
       }
     }
+
+    &--mb-0 {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -270,7 +274,7 @@ html, body {
   @include media(">=desktop") {
     background: linear-gradient(180deg, color(mono, white) 60%, color(gray, mercury) 60%);
     display: block;
-    padding: 55px 0;
+    padding: 55px 0 0 0;
   }
 
   .section__title {
@@ -311,6 +315,10 @@ html, body {
 
       .sobre__content {
 
+        @include media(">=tablet") {
+          padding-right: 25px;
+        }
+
         @include media(">=desktop") {
           padding-right: 40px;
         }
@@ -326,9 +334,13 @@ html, body {
     width: 100%;
 
     @include media(">=tablet") {
-      height: 350px;
+      height: 250px;
       max-width: 390px;
       flex: .6;
+    }
+
+    @include media(">=desktop") {
+      height: 350px;
     }
   }
 
@@ -338,6 +350,10 @@ html, body {
     @include media(">=tablet") {
       padding: 0;
       flex: 1;
+    }
+
+    @include media(">=tablet") {
+      padding-left: 25px;
     }
 
     @include media(">=desktop") {
@@ -364,6 +380,154 @@ html, body {
 
     @include media(">=desktop") {
       font-size: 22px;
+    }
+  }
+}
+
+.carroussel {
+  &__item {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 260px;
+
+    @include media(">=tablet") {
+      height: 400px;
+    }
+
+    @include media(">=desktop") {
+      height: 580px;
+    }
+  }
+
+  &__arrow {
+    background: transparent;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 36px;
+    z-index: z("absolute");
+
+    @include media(">=tablet") {
+      height: 42px;
+      width: 26px;
+    }
+
+    @include media(">=desktop") {
+      height: 56px;
+      width: 26px;
+    }
+
+    &--prev {
+      background: center / contain no-repeat url("../img/arrow-white-left.png");
+      left: 15px;
+
+      @include media(">=tablet") {
+        left: 30px;
+      }
+
+      @include media(">=larger") {
+        left: 80px;
+      }
+    }
+
+    &--next {
+      background: center / contain no-repeat url("../img/arrow-white-right.png");
+      right: 15px;
+
+      @include media(">=tablet") {
+        right: 30px;
+      }
+
+      @include media(">=larger") {
+        right: 80px;
+      }
+    }
+  }
+}
+
+.depo {
+  &__item {
+    font-size: 16px;
+    font-style: italic;
+    font-weight: fw("light");
+    line-height: 1.28;
+    padding: 0 45px;
+    text-align: center;
+
+    @include media(">=tablet") {
+      text-align: left;
+      padding: 0 120px;
+    }
+
+    @include media(">=desktop") {
+      font-size: 28px;
+      padding: 0 160px;
+    }
+  }
+
+  &__footer {
+    margin-top: 25px;
+    text-align: right;
+  }
+
+  &__author {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: fw("bold");
+    margin-bottom: 5px;
+    position: relative;
+
+    &::before {
+      content: "–";
+      padding-right: 5px;
+    }
+
+    @include media(">=desktop") {
+      font-size: 28px;
+    }
+  }
+
+  &__prof {
+    display: block;
+    font-size: 14px;
+    font-style: normal;
+
+    @include media(">=desktop") {
+      font-size: 22px;
+    }
+  }
+
+  &__arrow {
+    background: transparent;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 36px;
+    z-index: z("absolute");
+
+    @include media(">=tablet") {
+      height: 42px;
+      width: 26px;
+    }
+
+    @include media(">=desktop") {
+      height: 56px;
+      width: 26px;
+    }
+
+    &--prev {
+      background: center / contain no-repeat url("../img/arrow-left.png");
+      left: 0;
+    }
+
+    &--next {
+      background: center / contain no-repeat url("../img/arrow-right.png");
+      right: 0;
     }
   }
 }

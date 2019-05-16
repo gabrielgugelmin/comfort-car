@@ -40,4 +40,51 @@
       padding: 70px 0;
     }
   }
+
+  &--text-center {
+    .section__title,
+    .section__text {
+      text-align: center;
+    }
+  }
+}
+
+.time {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 45px;
+
+  &__img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 140px;
+    width: calc(50% - 10px);
+
+    @include media(">=tablet") {
+      height: 260px
+    }
+
+    @include media(">=desktop") {
+      height: 390px;
+    }
+
+    &:first-child {
+      height: 220px;
+      margin-bottom: 20px;
+      width: 100%;
+
+      @include media(">=tablet") {
+        height: 400px
+      }
+
+      @include media(">=desktop") {
+        height: 700px;
+      }
+    }
+
+    &:last-child {
+      margin-left: 20px;
+    }
+  }
 }

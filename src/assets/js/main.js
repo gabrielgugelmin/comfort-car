@@ -30,6 +30,22 @@ $(function () {
     dots: false,
   });
 
+  // slider sobre
+  $('.js-sobre-slider').slick({
+    arrows: true,
+    dots: false,
+    prevArrow: '<button type="button" class="carroussel__arrow carroussel__arrow--prev"></button>',
+    nextArrow: '<button type="button" class="carroussel__arrow carroussel__arrow--next"></button>',
+  });
+
+  // slider depoimentos
+  $('.js-depo-slider').slick({
+    arrows: true,
+    dots: false,
+    prevArrow: '<button type="button" class="depo__arrow depo__arrow--prev"></button>',
+    nextArrow: '<button type="button" class="depo__arrow depo__arrow--next"></button>',
+  });
+
   // slider oportunidades
   $('.js-slider-oportunidades').slick({
     arrows: false,
