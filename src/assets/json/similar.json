@@ -1,0 +1,209 @@
+[
+  {
+    "id": 1,
+    "img": "assets/img/carros/c1.jpg",
+    "title": "Título do carro 1",
+    "brand": "mercedes-benz",
+    "modelo": "modelo1",
+    "ano": "ano1",
+    "preco": "20.000,00"
+  },
+  {
+    "id": 2,
+    "img": "assets/img/carros/c2.jpg",
+    "title": "GLA 200 1.6 CGI STYLE 16V TURBO FLEX 4P AUTOMÁTICO 2015/2016",
+    "brand": "audi",
+    "modelo": "modelo1",
+    "ano": "ano1",
+    "preco": "30.000,00"
+  },
+  {
+    "id": 3,
+    "img": "assets/img/carros/c3.jpg",
+    "title": "Título do carro 3 Lorem Ipsum",
+    "brand": "mercedes-benz",
+    "modelo": "modelo3",
+    "ano": "ano2",
+    "preco": "40.000,00"
+  },
+  {
+    "id": 4,
+    "img": "assets/img/carros/c1.jpg",
+    "title": "GLA 200 1.6 CGI STYLE 16V TURBO FLEX 4P AUTOMÁTICO 2015/2016",
+    "brand": "ferrari",
+    "modelo": "modelo2",
+    "ano": "ano3",
+    "preco": "60.000,00"
+  },
+  {
+    "id": 5,
+    "img": "assets/img/carros/c2.jpg",
+    "title": "GLA 200 1.6 CGI STYLE 16V TURBO FLEX 4P AUTOMÁTICO 2015/2016",
+    "brand": "mercedes-benz",
+    "modelo": "modelo1",
+    "ano": "ano1",
+    "preco": "90.000,00"
+  },
+  {
+    "id": 6,
+    "img": "assets/img/carros/c1.jpg",
+    "title": "GLA 200 1.6 CGI STYLE 16V TURBO FLEX 4P AUTOMÁTICO 2015/2016",
+    "brand": "audi",
+    "modelo": "modelo2",
+    "ano": "ano2",
+    "preco": "189.000,00"
+  },
+  {
+    "id": 7,
+    "img": "assets/img/carros/c3.jpg",
+    "title": "GLA 200 1.6 CGI STYLE 16V TURBO FLEX 4P AUTOMÁTICO 2015/2016",
+    "brand": "ferrari",
+    "modelo": "modelo3",
+    "ano": "ano1",
+    "preco": "25.000,00"
+  },
+  {
+    "id": 8,
+    "img": "assets/img/carros/c2.jpg",
+    "title": "GLA 200 1.6 CGI STYLE 16V TURBO FLEX 4P AUTOMÁTICO 2015/2016",
+    "brand": "mercedes-benz",
+    "modelo": "modelo2",
+    "ano": "ano1",
+    "preco": "60.000,00"
+  },
+  {
+    "id": 9,
+    "img": "assets/img/carros/c3.jpg",
+    "title": "GLA 200 1.6 CGI STYLE 16V TURBO FLEX 4P AUTOMÁTICO 2015/2016",
+    "brand": "mercedes-benz",
+    "modelo": "modelo1",
+    "ano": "ano1",
+    "preco": "30.000,00"
+  },
+  {
+    "id": 10,
+    "img": "assets/img/carros/c1.jpg",
+    "title": "Título do carro 1",
+    "brand": "mercedes-benz",
+    "modelo": "modelo1",
+    "ano": "ano1",
+    "preco": "20.000,00"
+  },
+  {
+    "id": 11,
+    "img": "assets/img/carros/c2.jpg",
+    "title": "GLA 200 1.6 CGI STYLE 16V TURBO FLEX 4P AUTOMÁTICO 2015/2016",
+    "brand": "audi",
+    "modelo": "modelo1",
+    "ano": "ano1",
+    "preco": "30.000,00"
+  },
+  {
+    "id": 12,
+    "img": "assets/img/carros/c3.jpg",
+    "title": "Título do carro 3 Lorem Ipsum",
+    "brand": "mercedes-benz",
+    "modelo": "modelo3",
+    "ano": "ano2",
+    "preco": "40.000,00"
+  },
+  {
+    "id": 13,
+    "img": "assets/img/carros/c1.jpg",
+    "title": "GLA 200 1.6 CGI STYLE 16V TURBO FLEX 4P AUTOMÁTICO 2015/2016",
+    "brand": "ferrari",
+    "modelo": "modelo2",
+    "ano": "ano3",
+    "preco": "60.000,00"
+  },
+  {
+    "id": 14,
+    "img": "assets/img/carros/c2.jpg",
+    "title": "GLA 200 1.6 CGI STYLE 16V TURBO FLEX 4P AUTOMÁTICO 2015/2016",
+    "brand": "mercedes-benz",
+    "modelo": "modelo1",
+    "ano": "ano1",
+    "preco": "90.000,00"
+  },
+  {
+    "id": 15,
+    "img": "assets/img/carros/c1.jpg",
+    "title": "GLA 200 1.6 CGI STYLE 16V TURBO FLEX 4P AUTOMÁTICO 2015/2016",
+    "brand": "audi",
+    "modelo": "modelo2",
+    "ano": "ano2",
+    "preco": "189.000,00"
+  },
+  {
+    "id": 16,
+    "img": "assets/img/carros/c3.jpg",
+    "title": "GLA 200 1.6 CGI STYLE 16V TURBO FLEX 4P AUTOMÁTICO 2015/2016",
+    "brand": "ferrari",
+    "modelo": "modelo3",
+    "ano": "ano1",
+    "preco": "25.000,00"
+  },
+  {
+    "id": 17,
+    "img": "assets/img/carros/c2.jpg",
+    "title": "GLA 200 1.6 CGI STYLE 16V TURBO FLEX 4P AUTOMÁTICO 2015/2016",
+    "brand": "mercedes-benz",
+    "modelo": "modelo2",
+    "ano": "ano1",
+    "preco": "60.000,00"
+  },
+  {
+    "id": 18,
+    "img": "assets/img/carros/c3.jpg",
+    "title": "GLA 200 1.6 CGI STYLE 16V TURBO FLEX 4P AUTOMÁTICO 2015/2016",
+    "brand": "mercedes-benz",
+    "modelo": "modelo1",
+    "ano": "ano1",
+    "preco": "30.000,00"
+  },
+  {
+    "id": 19,
+    "img": "assets/img/carros/c2.jpg",
+    "title": "GLA 200 1.6 CGI STYLE 16V TURBO FLEX 4P AUTOMÁTICO 2015/2016",
+    "brand": "mercedes-benz",
+    "modelo": "modelo1",
+    "ano": "ano1",
+    "preco": "90.000,00"
+  },
+  {
+    "id": 20,
+    "img": "assets/img/carros/c1.jpg",
+    "title": "GLA 200 1.6 CGI STYLE 16V TURBO FLEX 4P AUTOMÁTICO 2015/2016",
+    "brand": "audi",
+    "modelo": "modelo2",
+    "ano": "ano2",
+    "preco": "189.000,00"
+  },
+  {
+    "id": 21,
+    "img": "assets/img/carros/c3.jpg",
+    "title": "GLA 200 1.6 CGI STYLE 16V TURBO FLEX 4P AUTOMÁTICO 2015/2016",
+    "brand": "ferrari",
+    "modelo": "modelo3",
+    "ano": "ano1",
+    "preco": "25.000,00"
+  },
+  {
+    "id": 22,
+    "img": "assets/img/carros/c2.jpg",
+    "title": "GLA 200 1.6 CGI STYLE 16V TURBO FLEX 4P AUTOMÁTICO 2015/2016",
+    "brand": "mercedes-benz",
+    "modelo": "modelo2",
+    "ano": "ano1",
+    "preco": "60.000,00"
+  },
+  {
+    "id": 23,
+    "img": "assets/img/carros/c3.jpg",
+    "title": "GLA 200 1.6 CGI STYLE 16V TURBO FLEX 4P AUTOMÁTICO 2015/2016",
+    "brand": "mercedes-benz",
+    "modelo": "modelo1",
+    "ano": "ano1",
+    "preco": "30.000,00"
+  }
+]

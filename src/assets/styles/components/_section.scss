@@ -47,6 +47,17 @@
       text-align: center;
     }
   }
+
+  &--text-left {
+    .section__title,
+    .section__text {
+      text-align: left;
+    }
+  }
+
+  &--pb-0 {
+    padding-bottom: 0;
+  }
 }
 
 .time {

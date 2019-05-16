@@ -5,6 +5,10 @@
     margin-bottom: 10px;
     position: relative;
 
+    @include media(">=larger") {
+      margin-bottom: 15px;
+    }
+
     &--icon {
       .input {
         padding-right: 60px;
@@ -41,10 +45,19 @@
     padding: 13px 15px;
     width: 100%;
 
+    @include media(">=larger") {
+      font-size: 22px;
+      padding: 18px 20px;
+    }
+
     @at-root {
       textarea#{&} {
         resize: none;
         height: 125px;
+
+        @include media(">=larger") {
+          height: 170px;
+        }
       }
 
       select#{&} {
@@ -74,10 +87,11 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    padding: 15px 0;
 
     .checkbox {
       align-self: center;
-      margin-bottom: 15px;
+      margin-bottom: 30px;
 
       @include media(">=tablet") {
         margin-bottom: 0;
@@ -110,7 +124,7 @@
   $checkbox-bg-color-checked: transparent;
   $checkbox-border-color-checked: $checkbox-bg-color-checked;
   $checkbox-bg-color-unchecked: transparent;
-  $checkbox-border-color-unchecked:  #fff;
+  $checkbox-border-color-unchecked:  color(mono, black);
 
   $radio-checked-color: $checkbox-bg-color-checked;
   $radio-unchecked-color: $checkbox-border-color-unchecked;
@@ -119,7 +133,7 @@
   .form__checkbox {
     display: none;
 
-    @mixin checkbox-structure($width: 26px, $height: 26px, $top: -4px, $left: '', $border-color: '', $background-color: '') {
+    @mixin checkbox-structure($width: 44px, $height: 44px, $top: -8px, $left: '', $border-color: '', $background-color: '') {
       content: "";
       height: $height;
       position: absolute;
@@ -139,14 +153,14 @@
     }
 
     &:not(:checked) + label::before {
-      @include checkbox-structure($border-color: color(mono, white), $background-color: $checkbox-bg-color-unchecked);
+      @include checkbox-structure($border-color: color(mono, black), $background-color: $checkbox-bg-color-unchecked);
 
       left: 0;
     }
 
     &:checked + label {
       &::before {
-        @include checkbox-structure($border-color: color(mono, white), $background-color: $checkbox-bg-color-checked);
+        @include checkbox-structure($border-color: color(mono, black), $background-color: $checkbox-bg-color-checked);
 
         left: 0;
       }
@@ -154,11 +168,11 @@
       &::after {
         @include checkbox-structure($width: 0, $height: 0);
         animation: fade-in .25s;
-        color: color(mono, white);
+        color: color(orange, flamingo);
         content: "\2713";
-        font-size: 16px;
-        left: 5px;
-        top: 2px;
+        font-size: 26px;
+        left: 12px;
+        top: 0;
       }
     }
 
@@ -187,13 +201,16 @@
   .form__checkbox,
   .form__radio {
     + label {
-      color: color(mono, white);
+      color: color(mono, black);
       cursor: pointer;
       font-size: 16px;
-      font-style: italic;
       font-weight: fw("light");
-      padding-left: 40px;
+      padding-left: 60px;
       position: relative;
+
+      @include media(">=larger") {
+        font-size: 20px;
+      }
     }
   }
 

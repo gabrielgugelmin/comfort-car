@@ -6,7 +6,7 @@
   top: 0;
   transition: .15s linear;
   width: 100%;
-  z-index: z("fixed");
+  z-index: z("absolute");
 
   @include media(">=desktop") {
     padding: 60px 0;

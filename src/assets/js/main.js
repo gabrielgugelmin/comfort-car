@@ -63,28 +63,35 @@ $(function () {
     ]
   });
 
-  // slider youtube
-  $('.js-video-slider').slick({
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+  // slider de veículo
+  $('.js-vehicle-slider').slick({
+    arrows: false,
+    dots: false,
+  });
+  // slider de veículo
+  $('.js-vehicle-nav-slider').slick({
     arrows: true,
-    prevArrow: '<button type="button" class="video-slider__arrow video-slider__arrow--prev"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 54.5 95" style="enable-background:new 0 0 54.5 95;" xml:space="preserve"><g><path fill="#FFF" d="M8.7,1.5C7.7,0.5,6.5,0,5.1,0S2.5,0.6,1.5,1.5C0.5,2.5,0,3.7,0,5.1s0.5,2.6,1.5,3.6l38.9,38.8L1.5,86.3 c-1,1-1.5,2.2-1.5,3.6s0.5,2.6,1.5,3.6S3.7,95,5,95c1.2,0,2.5-0.5,3.5-1.4l46-46L8.7,1.5z"/></g></svg></button>',
-    nextArrow: '<button type="button" class="video-slider__arrow video-slider__arrow--next"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 54.5 95" style="enable-background:new 0 0 54.5 95;" xml:space="preserve"><g><path fill="#FFF" d="M8.7,1.5C7.7,0.5,6.5,0,5.1,0S2.5,0.6,1.5,1.5C0.5,2.5,0,3.7,0,5.1s0.5,2.6,1.5,3.6l38.9,38.8L1.5,86.3 c-1,1-1.5,2.2-1.5,3.6s0.5,2.6,1.5,3.6S3.7,95,5,95c1.2,0,2.5-0.5,3.5-1.4l46-46L8.7,1.5z"/></g></svg></button>',
+    dots: false,
+    asNavFor: $('.js-vehicle-slider'),
     mobileFirst: true,
+    prevArrow: '<button type="button" class="vehicle-slider-nav__arrow vehicle-slider-nav__arrow--prev"></button>',
+    nextArrow: '<button type="button" class="vehicle-slider-nav__arrow vehicle-slider-nav__arrow--next"></button>',
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    focusOnSelect: true,
     responsive: [
       {
         breakpoint: 767,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 4,
+          slidesToScroll: 1,
         }
       },
       {
-        breakpoint: 992,
+        breakpoint: 991,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 5,
+          slidesToScroll: 1,
         }
       },
     ]
@@ -110,7 +117,9 @@ $(function () {
 
   // SCROLLBAR
   if ($('.js-scrollbar').length > 0) {
-    const ps = new PerfectScrollbar('.js-scrollbar');
+    const ps = new PerfectScrollbar('.js-scrollbar', {
+      wheelPropagation: false,
+    });
   }
 
   // SMOOTH SCROLL
@@ -299,7 +308,8 @@ $(function () {
   }
 
   function getItems() {
-    $.getJSON("/assets/json/cars.json", function (data) {})
+    var contentToLoad = $('.js-grid').data('load');
+    $.getJSON("/assets/json/" + contentToLoad + ".json", function (data) {})
     .fail(function (data) {
     }).done(function (data) {
       $.each(data, function (index, item) {
@@ -316,7 +326,7 @@ $(function () {
 });
 
 function getItemLayout(item) {
-  return `<a href="#!" class="grid__item car ${slugify(item.brand)} ${slugify(item.modelo)} ${slugify(item.ano)}" data-valor=${item.preco}>
+  return `<a href="veiculo.htmlmm" class="grid__item car ${slugify(item.brand)} ${slugify(item.modelo)} ${slugify(item.ano)}" data-valor=${item.preco}>
     <div class="car__img" style="background-image: url(${item.img})"></div>
     <div class="car__detail">
       <p>${item.title}</p>

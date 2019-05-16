@@ -1,6 +1,6 @@
-@import 'vendors/all';
 @import 'variables/all';
 @import 'abstracts/all';
+@import 'vendors/all';
 @import 'base/all';
 @import 'components/all';
 
@@ -528,6 +528,14 @@ html, body {
     &--next {
       background: center / contain no-repeat url("../img/arrow-right.png");
       right: 0;
+    }
+  }
+}
+
+.similar {
+  .section__title {
+    @include media(">=desktop") {
+      margin-bottom: 65px;
     }
   }
 }
