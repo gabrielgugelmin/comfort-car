@@ -25,9 +25,17 @@ $(function () {
   });
 
   // slider banner
-  $('.js-banner-slider').slick({
+  $('.js-slider-banner').slick({
     arrows: false,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    centerMode: true,
+    cssEase: 'linear',
     dots: false,
+    fade: true,
+    infinite: true,
+    mobileFirst: true,
+    speed: 500,
   });
 
   // slider sobre
@@ -98,22 +106,22 @@ $(function () {
   });
 
   // INSTAGRAM
-  // var device = checkWindowWidth();
-  // if ($('.instafeed').length) {
-  //   if (device === 'desktop') {
-  //     var feed = new Instafeed({
-  //       accessToken: 'aa',
-  //       clientId: 'aa',
-  //       get: 'user',
-  //       limit: 5,
-  //       resolution: 'low_resolution',
-  //       tagName: 'aa',
-  //       template: '<a target="_blank" class="instafeed__item" style="background-image: url({{image}})" href="{{link}}"><div class="instafeed__content"><div class="instafeed__info"><span class="instafeed__icon instafeed__icon--heart">{{likes}}</span><span class="instafeed__icon instafeed__icon--comment">{{comments}}</span></div></div></a>',
-  //       userId: 'aa'
-  //     });
-  //     feed.run();
-  //   }
-  // }
+  var device = checkWindowWidth();
+  if ($('.instafeed').length) {
+    if (device === 'desktop') {
+      var feed = new Instafeed({
+        accessToken: '5417155028.de1e206.ddbace0852b54239a6ac34dd0318d8ae',
+        clientId: 'de1e2068b9e34c908d25bb6db2bc21d6',
+        get: 'user',
+        limit: 5,
+        resolution: 'low_resolution',
+        tagName: 'rosalvo',
+        template: '<a target="_blank" class="instafeed__item" style="background-image: url({{image}})" href="{{link}}"><div class="instafeed__content"><div class="instafeed__info"><span class="instafeed__icon instafeed__icon--heart">{{likes}}</span><span class="instafeed__icon instafeed__icon--comment">{{comments}}</span></div></div></a>',
+        userId: '5417155028'
+      });
+      feed.run();
+    }
+  }
 
   // SCROLLBAR
   if ($('.js-scrollbar').length > 0) {
@@ -159,11 +167,12 @@ $(function () {
     var modelosFilter;
     var anosFilter;
     var precosFilter;
+    var categoriasFilter;
 
 
     // init Isotope
     var $container = $('.js-grid').isotope({
-      itemSelector: '.grid__item',
+      // itemSelector: '.grid__item',
       layoutMode: 'fitRows',
       getSortData: {
         valor: '[data-valor] parseInt',
@@ -176,7 +185,8 @@ $(function () {
         modelosResult = modelosFilter ? $this.is(modelosFilter) : true;
         anosResult = anosFilter ? $this.is(anosFilter) : true;
         precosResult = precosFilter ? $this.is(precosFilter) : true;
-        return searchResult && marcasResult && modelosResult && anosResult && precosResult;
+        categoriasResult = categoriasFilter ? $this.is(categoriasFilter) : true;
+        return searchResult && marcasResult && modelosResult && anosResult && precosResult && categoriasResult;
       }
     });
 
@@ -204,6 +214,8 @@ $(function () {
         return item.element;
       });
 
+      console.log(hiddenElems);
+
       $(hiddenElems).addClass('hidden');
       $container.isotope('layout');
 
@@ -225,34 +237,6 @@ $(function () {
       loadMore(counter);
     });
 
-    // Filtra os itens pelo Estado
-    $('#estados').on('change', function () {
-      estadosFilter = this.value;
-      loadMore(1000);
-      $container.isotope();
-    });
-
-    // Filtra os itens pela Cidade
-    $('#cidades').on('change', function () {
-      cidadesFilter = this.value;
-      loadMore(1000);
-      $container.isotope();
-    });
-
-    // Filtra os itens pela Região
-    $('#regioes').on('change', function () {
-      regioesFilter = this.value;
-      loadMore(1000);
-      $container.isotope();
-    });
-
-    // Filtra os itens pela Cidade
-    $('#bairros').on('change', function () {
-      bairrosFilter = this.value;
-      loadMore(1000);
-      $container.isotope();
-    });
-
     // Filtra os itens pela Marca
     $('#marcas').on('change', function () {
       marcasFilter = this.value;
@@ -270,6 +254,13 @@ $(function () {
     // Filtra os itens por Ano
     $('#anos').on('change', function () {
       anosFilter = this.value;
+      loadMore(1000);
+      $container.isotope();
+    });
+
+    // Filtra os itens por Categoria
+    $('#categorias').on('change', function () {
+      categoriasFilter = this.value;
       loadMore(1000);
       $container.isotope();
     });
@@ -315,7 +306,7 @@ $(function () {
       $.each(data, function (index, item) {
         if(item.id) {
           // console.log(item);
-          var $box = getItemLayout(item);
+          var $box = getItemLayout(item, contentToLoad);
         }
         $(".js-grid").append($box);
       });
@@ -325,14 +316,25 @@ $(function () {
   }
 });
 
-function getItemLayout(item) {
-  return `<a href="veiculo.htmlmm" class="grid__item car ${slugify(item.brand)} ${slugify(item.modelo)} ${slugify(item.ano)}" data-valor=${item.preco}>
+function getItemLayout(item, contentToLoad) {
+  if (contentToLoad === 'cars') {
+    return `<a href="veiculo.html" class="grid__item car ${slugify(item.brand)} ${slugify(item.modelo)} ${slugify(item.ano)}" data-valor=${item.preco}>
     <div class="car__img" style="background-image: url(${item.img})"></div>
     <div class="car__detail">
       <p>${item.title}</p>
     </div>
     <span class="button button--large">conferir</span>
   </a>`;
+  } else if (contentToLoad === 'posts') {
+    return `<a href="artigo.html" class="blog__item ${slugify(item.categoria)}" style="background-image: url(${item.img})">
+      <div class="container">
+        <div class="blog__detail">
+          <p class="blog__title">${item.title}</p>
+          <span class="button button--orange">Ler</span>
+        </div>
+      </div>
+    </a>`;
+  }
 }
 
 function closeMenu() {
