@@ -46,6 +46,14 @@ $(function () {
     nextArrow: '<button type="button" class="carroussel__arrow carroussel__arrow--next"></button>',
   });
 
+  // slider arigo
+  $('.js-artigo-slider').slick({
+    arrows: true,
+    dots: false,
+    prevArrow: '<button type="button" class="artigo__arrow artigo__arrow--prev"></button>',
+    nextArrow: '<button type="button" class="artigo__arrow artigo__arrow--next"></button>',
+  });
+
   // slider depoimentos
   $('.js-depo-slider').slick({
     arrows: true,
@@ -173,9 +181,15 @@ $(function () {
     // init Isotope
     var $container = $('.js-grid').isotope({
       // itemSelector: '.grid__item',
-      layoutMode: 'fitRows',
+      // layoutMode: 'fitRows',
       getSortData: {
         valor: '[data-valor] parseInt',
+      },
+      hiddenStyle: {
+        opacity: 0
+      },
+      visibleStyle: {
+        opacity: 1
       },
       filter: function () {
         var $this = $(this);
@@ -213,8 +227,6 @@ $(function () {
       var hiddenElems = iso.filteredItems.slice(toShow, elems.length).map(function (item) {
         return item.element;
       });
-
-      console.log(hiddenElems);
 
       $(hiddenElems).addClass('hidden');
       $container.isotope('layout');

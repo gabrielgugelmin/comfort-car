@@ -117,7 +117,7 @@
       margin-bottom: 110px;
     }
 
-    img {
+    svg {
       @include media(">=desktop") {
         height: 45px;
       }

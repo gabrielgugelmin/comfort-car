@@ -1,4 +1,6 @@
 .blog {
+  padding: 5px 0 0 0;
+
   &__item {
     background-position: center;
     background-repeat: no-repeat;
@@ -82,9 +84,19 @@
     padding: 0 15px;
     margin-bottom: 15px;
 
-    
+    .form__input {
+      font-weight: fw("bold");
+
+      @include placeholder {
+        font-weight: fw("bold");
+        font-style: normal;
+        text-transform: uppercase;
+      }
+    }
 
     @include media(">=tablet") {
+      margin-bottom: 50px;
+
       > .container {
         display: flex;
         flex-direction: row;
@@ -106,10 +118,33 @@
     font-weight: fw("regular");
     text-align: center;
     width: 160px;
+
+    @include media(">=tablet") {
+      font-size: 16px;
+    }
   }
 
   .container {
     height: 100%;
     position: relative;
+  }
+
+  .grid__footer {
+    padding: 50px 0;
+
+    @include media(">=desktop") {
+      padding: 75px 0;
+    }
+
+    .button {
+      font-size: 16px;
+      font-weight: fw("bold");
+      width: 200px;
+
+      @include media(">=desktop") {
+        font-size: 22px;
+        width: 370px;
+      }
+    }
   }
 }

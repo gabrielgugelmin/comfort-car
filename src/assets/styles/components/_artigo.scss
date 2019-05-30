@@ -1,0 +1,165 @@
+.artigo {
+
+  &__slider {}
+
+  &__item {
+    background-repeat: no-repeat;
+    height: 300px;
+    background-position: center;
+    background-size: cover;
+
+    @include media(">=tablet") {
+      height: 580px;
+    }
+  }
+
+  &__arrow {
+    background: transparent;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    z-index: z("absolute");
+
+    @include media(">=tablet") {
+      height: 42px;
+      width: 30px;
+    }
+
+    @include media(">=desktop") {
+      height: 62px;
+      width: 30px;
+    }
+
+    &--prev {
+      background: center / contain no-repeat url("../img/arrow-white-left.png");
+
+      @include media(">=tablet") {
+        left: 30px;
+      }
+
+      @include media(">=larger") {
+        left: 85px;
+      }
+    }
+
+    &--next {
+      background: center / contain no-repeat url("../img/arrow-white-right.png");
+
+      @include media(">=tablet") {
+        right: 30px;
+      }
+
+      @include media(">=larger") {
+        right: 85px;
+      }
+    }
+  }
+
+  &__intro {
+    text-align: center;
+    padding: 70px 0 30px;
+
+    @include media(">=desktop") {
+      padding: 120px 0 40px;
+    }
+  }
+
+  &__title {
+    font-size: 20px;
+    font-family: $font-title;
+    font-weight: fw("bold");
+    margin-bottom: 30px;
+
+    @include media(">=desktop") {
+      font-size: 32px;
+    }
+  }
+
+  &__desc {
+    font-size: 16px;
+    line-height: 1.63;
+    font-weight: fw("light");
+
+    @include media(">=desktop") {
+      font-size: 22px;
+    }
+  }
+
+  &__content {
+    font-size: 16px;
+    line-height: 1.63;
+    font-weight: fw("light");
+    padding-bottom: 50px;
+
+    @include media(">=desktop") {
+      padding-bottom: 85px;
+    }
+
+    a {
+      color: currentColor;
+      text-decoration: underline;
+    }
+
+    @include media(">=desktop") {
+      font-size: 22px;
+    }
+  }
+
+  &__text {
+    margin-bottom: 25px;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 50px;
+
+    @include media(">=tablet") {
+      flex-direction: row;
+      justify-content: space-between;
+      padding-bottom: 70px;
+    }
+
+    .button {
+      padding: 15px 50px;
+    }
+  }
+
+  &__social {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+
+    @include media(">=tablet") {
+      margin-top: 0;
+      flex-direction: row;
+    }
+
+    span {
+      display: block;
+      font-weight: fw("light");
+      font-size: 16px;
+      margin-right: 20px;
+      margin-bottom: 15px;
+
+      @include media(">=desktop") {
+        font-size: 22px;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .social {
+    &__item {
+      margin-right: 40px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
