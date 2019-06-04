@@ -59,18 +59,18 @@
       </nav>
 
       <div class="page__header">
-        <h1>MERCEDES-BENZ C 180 - 1.6 CGI AVANTGARDE 16V TURBO </h1>
+        <h1 class="wow fadeInDown">MERCEDES-BENZ C 180 - 1.6 CGI AVANTGARDE 16V TURBO </h1>
       </div>
 
       <section>
         <div class="container">
-          <div class="vehicle-slider js-vehicle-slider">
-            <div class="vehicle-slider__item" style="background-image:url(assets/img/oportunidades.jpg)"></div>
-            <div class="vehicle-slider__item" style="background-image:url(assets/img/oportunidades.jpg)"></div>
-            <div class="vehicle-slider__item" style="background-image:url(assets/img/oportunidades.jpg)"></div>
-            <div class="vehicle-slider__item" style="background-image:url(assets/img/oportunidades.jpg)"></div>
-            <div class="vehicle-slider__item" style="background-image:url(assets/img/oportunidades.jpg)"></div>
-            <div class="vehicle-slider__item" style="background-image:url(assets/img/oportunidades.jpg)"></div>
+          <div class="vehicle-slider js-vehicle-slider wow fadeIn">
+            <a data-fancybox="gallery" href="assets/img/oportunidades.jpg" class="vehicle-slider__item" style="background-image:url(assets/img/oportunidades.jpg)"></a>
+            <a data-fancybox="gallery" href="assets/img/oportunidades.jpg" class="vehicle-slider__item" style="background-image:url(assets/img/oportunidades.jpg)"></a>
+            <a data-fancybox="gallery" href="assets/img/oportunidades.jpg" class="vehicle-slider__item" style="background-image:url(assets/img/oportunidades.jpg)"></a>
+            <a data-fancybox="gallery" href="assets/img/oportunidades.jpg" class="vehicle-slider__item" style="background-image:url(assets/img/oportunidades.jpg)"></a>
+            <a data-fancybox="gallery" href="assets/img/oportunidades.jpg" class="vehicle-slider__item" style="background-image:url(assets/img/oportunidades.jpg)"></a>
+            <a data-fancybox="gallery" href="assets/img/oportunidades.jpg" class="vehicle-slider__item" style="background-image:url(assets/img/oportunidades.jpg)"></a>
           </div>
           <div class="vehicle-slider-nav js-vehicle-nav-slider">
             <div class="vehicle-slider-nav__item" style="background-image:url(assets/img/oportunidades.jpg)"></div>
@@ -86,8 +86,8 @@
       <section class="section section--text-left section--pb-0 vehicle">
         <div class="container">
           <div class="row">
-            <div class="col-lg-6">
-              <h2 class="section__title">Ficha técnica</h2>
+            <div class="col-lg-6 wow fadeIn">
+              <h2 class="section__title wow fadeIn">Ficha técnica</h2>
               <p class="section__text">Mercedes-Benz C180, modelo 2015/2015, cor Cinza, com 26.000 km rodados, por apenas R$ 97.500,00</p>
 
               <div class="vehicle__detail js-scrollbar">
@@ -121,22 +121,22 @@
                 </ul>
               </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 wow fadeIn" data-wow-delay=".2s">
               <h2 class="section__title">Faça uma proposta</h2>
               <p class="section__text">Preencha o formulário a seguir com sua proposta e logo nosso representante irá entrar em contato.</p>
 
-              <form class="form" action="">
+              <form class="form" action="" id="form-proposta">
                 <div class="form__control">
-                  <input type="text" class="form__input" placeholder="Nome">
+                  <input type="text" class="form__input" placeholder="Nome" required>
                 </div>
                 <div class="form__control">
-                  <input type="email" class="form__input" placeholder="E-mail">
+                  <input type="email" class="form__input" placeholder="E-mail" required>
                 </div>
                 <div class="form__control">
-                  <input type="tel" class="form__input" placeholder="Telefone">
+                  <input type="tel" class="form__input" placeholder="Telefone" required>
                 </div>
                 <div class="form__control">
-                  <textarea class="form__input" placeholder="Mensagem"></textarea>
+                  <textarea class="form__input" placeholder="Mensagem" required></textarea>
                 </div>
                 <div class="form__footer">
                   <div class="checkbox">
@@ -144,7 +144,7 @@
                     <label for="newsletter">Assine nossa newsletter</label>
                   </div>
 
-                  <button class="button button--orange" type="button" data-micromodal-trigger="sucesso" data-micromodal-close="newsletter">Enviar</button>
+                  <button class="button button--orange" type="submit">Enviar</button>
                 </div>
               </form>
 
@@ -177,7 +177,7 @@
         <div class="container">
           <h2 class="section__title">CARROS SIMILARES QUE VOCÊ PODE GOSTAR</h2>
           <div class="grid">
-            <div class="grid__content js-grid" data-init-show="6" data-label-primary="carregar mais" data-label-secondary="entrar em contato" data-link="contato.html"  data-load="similar">
+            <div class="grid__content js-grid" data-init-show="6" data-label-primary="carregar mais" data-label-secondary="entrar em contato" data-link="contato.html"  data-load="cars">
               <a href="#!" class="grid__item car">
                 <div class="car__img" style="background-image: url(assets/img/carros/c1.jpg)"></div>
                 <div class="car__detail">
@@ -253,10 +253,10 @@
 
                 <form class="form" action="">
                   <div class="form__control">
-                    <input type="text" class="form__input" placeholder="Nome">
+                    <input type="text" class="form__input" placeholder="Nome" required>
                   </div>
                   <div class="form__control">
-                    <input type="email" class="form__input" placeholder="E-mail">
+                    <input type="email" class="form__input" placeholder="E-mail" required>
                   </div>
                   <div class="form__control form__submit">
                     <button class="button button--orange">enviar</button>
@@ -338,16 +338,16 @@
                 <div class="modal__title">Entrar em contato</div>
                 <form class="form" action="">
                   <div class="form__control">
-                    <input type="text" class="form__input" placeholder="Nome">
+                    <input type="text" class="form__input" placeholder="Nome" required>
                   </div>
                   <div class="form__control">
-                    <input type="email" class="form__input" placeholder="E-mail">
+                    <input type="email" class="form__input" placeholder="E-mail" required>
                   </div>
                   <div class="form__control">
-                    <input type="tel" class="form__input" placeholder="Telefone">
+                    <input type="tel" class="form__input" placeholder="Telefone" required>
                   </div>
                   <div class="form__control">
-                    <textarea class="form__input" placeholder="Mensagem"></textarea>
+                    <textarea class="form__input" placeholder="Mensagem" required></textarea>
                   </div>
                   <div class="form__footer">
                     <div class="checkbox">

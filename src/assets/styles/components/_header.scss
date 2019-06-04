@@ -6,7 +6,7 @@
   top: 0;
   transition: .15s linear;
   width: 100%;
-  z-index: z("absolute");
+  z-index: z("fixed");
 
   @include media(">=desktop") {
     padding: 60px 0;
@@ -43,9 +43,10 @@
 
   &__search {
     background: no-repeat center url(../img/search.svg) ;
-    width: 24px;
+    cursor: pointer;
     height: 24px;
     margin-right: 10px;
+    width: 24px;
   }
 
   &__menu {

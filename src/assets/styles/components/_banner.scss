@@ -4,8 +4,9 @@
   padding: 45px 0;
 
   @include media(">=desktop") {
-    padding-bottom: 110px;
-    margin-bottom: 130px;
+    background: linear-gradient(180deg, color(gray, mercury) 65%, color(mono, white) 65%);
+    // margin-bottom: 130px;
+    padding-bottom: 70px;
     position: relative;
   }
 

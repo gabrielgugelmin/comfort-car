@@ -1,0 +1,50 @@
+.search {
+  background: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top: 1px solid color(gray, mercury);
+  bottom: -30px;
+  padding: 15px;
+  position: absolute;
+  width: 100%;
+  transition: .2s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+
+  input {
+    padding: 10px 25px;
+    font-family: $font-title;
+    width: 100%;
+    text-transform: uppercase;
+
+    &:focus {
+      outline: 1px dashed color(gray, mercury);
+      outline-offset: 5px;
+    }
+  }
+
+  &--open {
+    transform: translateY(38px);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.autocomplete-suggestions {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  top: 75px;
+  width: 100%;
+}
+
+.autocomplete-suggestion {
+  border-bottom: 1px solid color(gray, mercury);
+  cursor: pointer;
+  padding: 12px 15px;
+  transition: background-color .2s ease-in-out;
+
+  &:hover {
+    background-color: lighten($color: color(gray, mercury), $amount: 5%);
+  }
+}

@@ -13,6 +13,11 @@ $(function () {
     closeMenu();
   });
 
+  $('.js-search').on('click', function(e) {
+    e.preventDefault();
+    openSearch();
+  });
+
 	// menu fixo ao scrollar
   $(window).scroll(function() {
     if ($(this).scrollTop() >= 30) {
@@ -124,12 +129,44 @@ $(function () {
         limit: 5,
         resolution: 'low_resolution',
         tagName: 'rosalvo',
-        template: '<a target="_blank" class="instafeed__item" style="background-image: url({{image}})" href="{{link}}"><div class="instafeed__content"><div class="instafeed__info"><span class="instafeed__icon instafeed__icon--heart">{{likes}}</span><span class="instafeed__icon instafeed__icon--comment">{{comments}}</span></div></div></a>',
+        template: '<a target="_blank" class="instafeed__item wow fadeIn" style="background-image: url({{image}})" href="{{link}}"><div class="instafeed__content"><div class="instafeed__info"><span class="instafeed__icon instafeed__icon--heart">{{likes}}</span><span class="instafeed__icon instafeed__icon--comment">{{comments}}</span></div></div></a>',
         userId: '5417155028'
       });
       feed.run();
     }
   }
+
+  // pesquisa
+  $('.js-search').on('focus', function(e){
+    $('.SearchResult').addClass('is-open');
+  });
+
+  var produtosArray = '';
+
+  /*$.ajax({
+    url: "/assets/json/busca.php",
+    dataType: "json",
+    async: false,
+    success: function(data) {
+      produtosArray = data;
+    }
+  });*/
+
+  var produtosArray = [{"value":"Linde Werdelin","data":"linde-werdelin"},{"value":"Jaeger-Lecoutre","data":"jaegerlecoutre"},{"value":"Breitling","data":"breitling"},{"value":"Jaeger-Lecoutre","data":"jaegerlecoutre"},{"value":"Hublot","data":"hublot"},{"value":"Panerai","data":"panerai"},{"value":"IWC","data":"iwc"},{"value":"Rolex","data":"rolex"},{"value":"Breitling","data":"breitling"},{"value":"IWC","data":"iwc"},{"value":"Rolex","data":"rolex"}];
+
+  // https://github.com/devbridge/jQuery-Autocomplete
+  $('.search__input').autocomplete({
+      lookup: produtosArray,
+      onSelect: function (suggestion) {
+        //alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+        window.location.href = "/produto/"+suggestion.data;
+      },
+      appendTo: '.search__result',
+      onSearchComplete: function(){
+        $('.search__result').addClass('is-visible');
+      }
+  });
+
 
   // SCROLLBAR
   if ($('.js-scrollbar').length > 0) {
@@ -137,6 +174,28 @@ $(function () {
       wheelPropagation: false,
     });
   }
+
+  $('#form-proposta').on('submit', function (e) {
+    e.preventDefault();
+
+    const required = $(this).find('input[required], textarea[required]');
+    console.log(required);
+
+    let ok = 0;
+    if (required) {
+      required.each(function (element) {
+        if (!$(element).is(':empty')) {
+          ok++;
+        }
+      });
+    }
+
+    if (ok === required.length) {
+      // envia o formulario
+      // this.submit();
+      MicroModal.show('sucesso');
+    }
+  });
 
   // SMOOTH SCROLL
   $('.js-scroll').on('click', function(e) {
@@ -167,6 +226,8 @@ $(function () {
   if ($('.js-grid').length) {
     getItems();
   }
+
+  new WOW().init();
 
   function initIsotope() {
     var qsRegex;
@@ -252,28 +313,28 @@ $(function () {
     // Filtra os itens pela Marca
     $('#marcas').on('change', function () {
       marcasFilter = this.value;
-      loadMore(1000);
+      loadMore(initShow);
       $container.isotope();
     });
 
     // Filtra os itens pelo Modelo
     $('#modelos').on('change', function () {
       modelosFilter = this.value;
-      loadMore(1000);
+      loadMore(initShow);
       $container.isotope();
     });
 
     // Filtra os itens por Ano
     $('#anos').on('change', function () {
       anosFilter = this.value;
-      loadMore(1000);
+      loadMore(initShow);
       $container.isotope();
     });
 
     // Filtra os itens por Categoria
     $('#categorias').on('change', function () {
       categoriasFilter = this.value;
-      loadMore(1000);
+      loadMore(initShow);
       $container.isotope();
     });
 
@@ -292,7 +353,7 @@ $(function () {
     var $quicksearch = $('.quicksearch').keyup( debounce( function() {
       qsRegex = new RegExp($quicksearch.val(), 'gi');
       $container.isotope();
-      loadMore(1000);
+      loadMore(6);
     }, 200));
 
     function debounce(fn, threshold) {
@@ -330,7 +391,7 @@ $(function () {
 
 function getItemLayout(item, contentToLoad) {
   if (contentToLoad === 'cars') {
-    return `<a href="veiculo.html" class="grid__item car ${slugify(item.brand)} ${slugify(item.modelo)} ${slugify(item.ano)}" data-valor=${item.preco}>
+    return `<a href="veiculo.html" class="grid__item car wow fadeIn ${slugify(item.brand)} ${slugify(item.modelo)} ${slugify(item.ano)}" data-valor=${item.preco}>
     <div class="car__img" style="background-image: url(${item.img})"></div>
     <div class="car__detail">
       <p>${item.title}</p>
@@ -338,7 +399,7 @@ function getItemLayout(item, contentToLoad) {
     <span class="button button--large">conferir</span>
   </a>`;
   } else if (contentToLoad === 'posts') {
-    return `<a href="artigo.html" class="blog__item ${slugify(item.categoria)}" style="background-image: url(${item.img})">
+    return `<a href="artigo.html" class="blog__item wow fadeIn ${slugify(item.categoria)}" style="background-image: url(${item.img})">
       <div class="container">
         <div class="blog__detail">
           <p class="blog__title">${item.title}</p>
@@ -352,13 +413,29 @@ function getItemLayout(item, contentToLoad) {
 function closeMenu() {
   $('.nav').removeClass('nav--open');
   $('body').removeClass('overflow-hidden');
-  $('.overlay').removeClass('overlay--open')
+  $('.overlay').removeClass('overlay--open');
 }
 
 function openMenu() {
   $('.nav').addClass('nav--open');
   $('body').addClass('overflow-hidden');
-  $('.overlay').addClass('overlay--open')
+  $('.overlay').addClass('overlay--open');
+}
+
+function openSearch () {
+  $('.search').addClass('search--open');
+  $('body').addClass('overflow-hidden');
+  $('.overlay').addClass('overlay--open');
+  setTimeout(() => {
+    $('.search input').focus();
+  }, 300);
+}
+
+function closeSearch () {
+  $('.search').removeClass('search--open');
+  $('body').removeClass('overflow-hidden');
+  $('.overlay').removeClass('overlay--open');
+  $('.search input').val('')
 }
 
 function viewport() {
@@ -384,10 +461,11 @@ function checkWindowWidth() {
 
 function clickOutsideMenu() {
   $(document).on('mouseup', function(e) {
-    var elem = $('.nav');
+    var elem = $('.nav, .search');
 
     if (!elem.is(e.target) && elem.has(e.target).length === 0) {
       closeMenu();
+      closeSearch();
     }
   });
 }
