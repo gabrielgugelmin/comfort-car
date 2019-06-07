@@ -52,6 +52,12 @@
 		@include media(">=larger") {
 			width: calc((100% / 5) - 29px);
 		}
+
+		@at-root {
+      select#{&} {
+        font-style: normal;
+      }
+    }
 	}
 
 	&__search {

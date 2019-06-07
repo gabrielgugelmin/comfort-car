@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "Modelo 1",
+    "value": "modelo1"
+  },
+  {
+    "id": 2,
+    "title": "Modelo 3",
+    "value": "modelo3"
+  },
+  {
+    "id": 3,
+    "title": "Modelo 4",
+    "value": "modelo4"
+  },
+  {
+    "id": 4,
+    "title": "Modelo 5",
+    "value": "modelo5"
+  }
+]

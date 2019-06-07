@@ -121,19 +121,19 @@ $(function () {
   // INSTAGRAM
   var device = checkWindowWidth();
   if ($('.instafeed').length) {
-    if (device === 'desktop') {
-      var feed = new Instafeed({
-        accessToken: '5417155028.de1e206.ddbace0852b54239a6ac34dd0318d8ae',
-        clientId: 'de1e2068b9e34c908d25bb6db2bc21d6',
-        get: 'user',
-        limit: 5,
-        resolution: 'low_resolution',
-        tagName: 'rosalvo',
-        template: '<a target="_blank" class="instafeed__item wow fadeIn" style="background-image: url({{image}})" href="{{link}}"><div class="instafeed__content"><div class="instafeed__info"><span class="instafeed__icon instafeed__icon--heart">{{likes}}</span><span class="instafeed__icon instafeed__icon--comment">{{comments}}</span></div></div></a>',
-        userId: '5417155028'
-      });
-      feed.run();
-    }
+    const limit = (device === 'desktop') ? 5 : 4;
+
+    var feed = new Instafeed({
+      accessToken: '2062070288.1677ed0.7ff767ea444f4440958a1a6c8e660d9a',
+      clientId: 'feb924f747174bdeaeb95531061cfce4',
+      get: 'user',
+      limit,
+      resolution: 'low_resolution',
+      tagName: 'comfortcar.br',
+      template: '<a target="_blank" class="instafeed__item wow fadeIn" style="background-image: url({{image}})" href="{{link}}"><div class="instafeed__content"><div class="instafeed__info"><span class="instafeed__icon instafeed__icon--heart">{{likes}}</span><span class="instafeed__icon instafeed__icon--comment">{{comments}}</span></div></div></a>',
+      userId: '2062070288'
+    });
+    feed.run();
   }
 
   // pesquisa
@@ -315,6 +315,8 @@ $(function () {
       marcasFilter = this.value;
       loadMore(initShow);
       $container.isotope();
+      const marca = this.value.replace('.', '');
+      loadModelos(marca);
     });
 
     // Filtra os itens pelo Modelo
@@ -388,6 +390,18 @@ $(function () {
     });
   }
 });
+
+function loadModelos (marca) {
+  // Esse json deve retornar os modelos da marca recebida via parametro
+  $.getJSON("/assets/json/modelos.json", function (data) {})
+    .fail(function (data) {
+    }).done(function (data) {
+      $("#modelos").empty();
+      $.each(data, function (index, item) {
+        $("#modelos").append(`<option value=".${item.value}">${item.title}</option>`);
+      });
+    });
+}
 
 function getItemLayout(item, contentToLoad) {
   if (contentToLoad === 'cars') {

@@ -122,6 +122,18 @@
   .button {
     padding: 15px 45px;
   }
+
+  .checkbox {
+    padding-bottom: 20px;
+    padding-top: 15px;
+    text-align: left;
+  }
+
+  &--small {
+    .modal__container {
+      max-width: 600px;
+    }
+  }
 }
 
 

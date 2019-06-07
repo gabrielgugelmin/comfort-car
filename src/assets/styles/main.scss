@@ -282,23 +282,6 @@ html, body {
     display: block;
     padding: 55px 0 0 0;
   }
-
-  .section__title {
-    display: none;
-
-    @include media(">=desktop") {
-      display: block;
-    }
-  }
-
-  &__img {
-    display: block;
-    margin: 0 auto;
-
-    @include media(">=desktop") {
-      display: none;
-    }
-  }
 }
 
 .sobre {

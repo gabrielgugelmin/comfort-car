@@ -61,8 +61,11 @@
       }
 
       select#{&} {
+        background: right 10px center / 16px no-repeat url(../img/sort-down.svg) transparent;
+        color: color(mono, black);
+        font-style: italic;
+        font-weight: fw("regular");
         padding-right: 30px;
-        background: right 10px center / 16px no-repeat url(../img/sort-down.svg) color(mono, white);
       }
     }
 
