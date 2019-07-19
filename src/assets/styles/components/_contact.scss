@@ -6,11 +6,12 @@
   left: 0;
   padding: 15px 0;
   position: fixed;
+  transition: transform .3s ease-in-out;
   width: 100%;
   z-index: z("absolute");
 
   @include media(">=desktop") {
-    padding: 25px 0 40px;
+    padding: 15px 0 15x;
   }
 
   &__list {
@@ -70,7 +71,7 @@
 
     @include media(">=desktop") {
       text-align: left;
-      padding-left: 90px;
+      padding-left: 100px;
       margin-bottom: 0;
       width: 100%;
     }
@@ -81,7 +82,7 @@
 
     @include media(">=desktop") {
       margin-right: 10px;
-      width: 30px;
+      width: 22px;
     }
   }
 
@@ -92,7 +93,15 @@
       font-family: $font-title;
       font-weight: fw("bold");
       display: block;
-      font-size: 26px;
+      font-size: 22px;
     }
   }
+  
+  &--down {
+	   transform: translateY(80px);
+	   
+	   @include media(">=desktop") {
+	    transform: translateY(150px)
+	  }
+	}
 }

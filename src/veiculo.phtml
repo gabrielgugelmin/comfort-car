@@ -1,0 +1,191 @@
+ <div class="page-content">
+
+      <div class="page__header">
+        <h1 class="wow fadeInDown"><?=$marca->nome.' '.$veiculo[0]->modelo?></h1>
+      </div>
+
+      <section>
+        <div class="container">
+          <div class="vehicle-slider js-vehicle-slider wow fadeIn">
+              <?php
+              foreach($album as $imagens){
+                  echo ' <a data-fancybox="gallery" href="'.$URLSITE.'/page/assets/img/albuns/album_' . $imagens->idAlbum . '/' . $imagens->file.'" class="vehicle-slider__item" style="background-image:url('.$URLSITE.'/page/assets/img/albuns/album_' . $imagens->idAlbum . '/' . $imagens->file.')"></a>';
+              }
+              ?>
+          </div>
+          <div class="vehicle-slider-nav js-vehicle-nav-slider">
+              <?php
+              foreach($album as $imagens){
+                 echo '<div class="vehicle-slider-nav__item" style="background-image:url('.$URLSITE . '/page/assets/img/albuns/album_' . $imagens->idAlbum . '/' . $imagens->file.')"></div>';
+              }
+              ?>
+
+          </div>
+        </div>
+      </section> 
+
+      <section class="section section--text-left section--pb-0 vehicle">
+        <div class="container">
+          <div class="row">
+            
+            
+            <div class="col-lg-6 wow fadeIn">
+              <h2 class="section__title wow fadeIn">Ficha técnica</h2>
+              <p class="section__text"><?php echo strtoupper('<strong>'.$marca->nome." ".$veiculo[0]->modelo. '</strong> <br>'.$veiculo[0]->motor.' '.$veiculo[0]->portas.' portas '.$transmissao->tipo); ?></p>
+              
+              <br>
+              <h2><strong>Preço: <?=$veiculo[0]->preco?></strong></h2>
+              <div class="vehicle__detail">
+                <ul>
+					<?php if($cor->nome!=''){ ?><li>Cor: <span><?=$cor->nome?></span></li><?php } ?>
+					<?php if($veiculo[0]->anoFabricacao!=''){ ?><li>Ano de fabricação: <span><?=$veiculo[0]->anoFabricacao?></span></li><?php } ?>
+					<?php if($veiculo[0]->anoModelo!=''){ ?><li>Ano do modelo: <span><?=$veiculo[0]->anoModelo?></span></li><?php } ?>
+					<?php if($veiculo[0]->km!=''){ ?><li>Km: <span><?=$veiculo[0]->km?></span></li><?php } ?>
+					
+					<?php if($veiculo[0]->motor!=''){ ?><li>Motor: <span><?=$veiculo[0]->motor?></span></li><?php } ?>
+					<?php if($veiculo[0]->potencia!=''){ ?><li>Potência: <span><?=$veiculo[0]->potencia?></span></li><?php } ?>
+					<?php if($veiculo[0]->aceleracao!=''){ ?><li>Aceleração: <span><?=$veiculo[0]->aceleracao?></span></li><?php } ?>
+					<?php if($veiculo[0]->airbag!=''){ ?><li>Airbag: <span><?=$veiculo[0]->airbag?></span></li><?php } ?>
+					<?php if($veiculo[0]->garantiaFabrica!=''){ ?><li>Garantia de fábrica: <span><?=$veiculo[0]->garantiaFabrica?></span></li><?php } ?>
+					
+					<?php if($combustivel->tipo!=''){ ?><li>Combustível: <span><?=$combustivel->tipo?></span></li><?php } ?>
+					<?php if($transmissao->tipo!=''){ ?><li>Transmissão: <span><?=$transmissao->tipo?></span></li><?php } ?>
+					<?php if($veiculo[0]->placa!=''){ ?><li>Placa: <span>XXX-XXX<?=substr($veiculo[0]->placa, -1)?></span></li><?php } ?>
+					<?php if($veiculo[0]->Portas!=''){ ?><li>Portas: <span><?=$veiculo[0]->portas?></span></li><?php } ?>
+					<?php if($veiculo[0]->Motor!=''){ ?><li>Motor: <span><?=$veiculo[0]->motor?></span></li><?php } ?>
+					<?php if($veiculo[0]->multimidia!=''){ ?><li>Multimídia: <span><?=$veiculo[0]->multimidia?></span></li><?php } ?>
+					<?php if($veiculo[0]->bancos!=''){ ?><li>Bancos: <span><?=$veiculo[0]->bancos?></span></li><?php } ?>
+					<?php if($veiculo[0]->freios!=''){ ?><li>Freios: <span><?=$veiculo[0]->freios?></span></li><?php } ?>
+					<?php if($veiculo[0]->farois!=''){ ?><li>Faróis: <span><?=$veiculo[0]->farois?></span></li><?php } ?>
+					<?php if($veiculo[0]->rodas!=''){ ?><li>Rodas: <span><?=$veiculo[0]->rodas?></span></li><?php } ?>
+					<?php if($sensor->tipo!=''){ ?><li>Sensor de estacionamento: <span><?=$sensor->tipo?></span></li><?php } ?>
+					<?php if($combustivel->tipo!=''){ ?><li>Combustível: <span><?=$combustivel->tipo?></span></li><?php } ?>
+					<?php if($veiculo[0]->bluetooth=='sim'){ ?><li>Bluetooth: <span><?=strtoupper($veiculo[0]->bluetooth)?></span></li><?php } ?>
+					<?php if($veiculo[0]->tetoSolar=='sim' or $veiculo[0]->tetoSolar=='panoramico'){ ?><li>Teto Solar: <span><?=strtoupper($veiculo[0]->tetoSolar)?></span></li><?php } ?>
+					<?php if($veiculo[0]->conversivel=='sim'){ ?><li>Conversível: <span><?=strtoupper($veiculo[0]->conversivel)?></span></li><?php } ?>
+					<?php if($veiculo[0]->pilotoAutomatico=='sim'){ ?><li>Piloto Automático: <span><?=strtoupper($veiculo[0]->pilotoAutomatico)?></span></li><?php } ?>
+					<?php if($veiculo[0]->sensorChuva=='sim'){ ?><li>Sensor de Chuva: <span><?=($veiculo[0]->sensorChuva)?></span></li><?php } ?>
+					<?php if($veiculo[0]->blindado=='sim'){ ?><li>Blindado: <span><?=($veiculo[0]->blindado)?></span></li><?php } ?>
+					
+					<?php if($veiculo[0]->observacoes!=''){ ?><li>Observações: <span><?=($veiculo[0]->observacoes)?></span></li><?php } ?>
+                </ul>
+
+              </div>
+            </div>
+            
+            <div class="col-lg-6 wow fadeIn" data-wow-delay=".2s">
+	            
+              <h2 class="section__title">Faça uma proposta</h2>
+              <p class="section__text">Preencha o formulário a seguir com sua proposta e logo nosso representante irá entrar em contato.</p>
+
+                <form id="formProposta" class="form" action="<?= $URLSITE?>/page/assets/ajax/proposta.php" method="post">
+                    <input id="preId" type="hidden" name="idVeiculo" value="<?= $veiculo[0]->idVeiculo ?>">
+
+			        <input type="hidden" name="idVeiculo" value="<?=$veiculo[0]->idVeiculo?>"> 
+			        <input type="hidden" name="urlVeiculo" value="<?=$URLSITE?>/veiculo/<?=$veiculo[0]->alias?>/<?=$veiculo[0]->idVeiculo?>"> 
+			        <input type="hidden" name="capaVeiculo" value="<?=$capa?>">
+                    
+                    <input type="hidden" name="redirect" value="1">
+                    <div class="form__control">
+                        <input type="text" id="preNome" name="nome" class="form__input" placeholder="Nome" required>
+                    </div>
+                    <div class="form__control">
+                        <input type="email" id="preEmail" name="email" class="form__input" placeholder="E-mail" required>
+                    </div>
+                    <div class="form__control">
+                        <input type="tel" id="preTel" name="telefone" class="form__input js-phone" placeholder="Telefone" required>
+                    </div>
+                    <div class="form__control">
+                        <textarea id="preMensagem" class="form__input" name="mensagem" placeholder="Mensagem" required></textarea>
+                    </div>
+                    <div class="form__footer">
+                        <div class="checkbox">
+                            <input id="newsletter" type="checkbox" class="form__checkbox"/>
+                            <label for="newsletter">Assine nossa newsletter</label>
+                        </div>
+
+                        <button class="button button--orange" type="submit">Enviar</button>
+                    </div>
+                </form>
+
+
+                <div class="vehicle__contact">
+                    <p class="vehicle__text">Se preferir ligue:</p>
+                    <ul class="vehicle__list vehicle__list--tel">
+                        <li>
+                            <a href="tel:1120959595" target="_blank"><img src="<?=$URLSITE?>/page/assets/img/tel.jpg" alt="Telefone"></a>
+                            <p><a href="tel:1120959595" target="_blank">(11) 2095-9595</a></p>
+                        </li>
+                        <li>
+                            <a href="https://api.whatsapp.com/send?phone=5511989402988" target="_blank" rel="noopener">
+                                <img src="<?=$URLSITE?>/page/assets/img/zap.jpg" alt="WhatsApp"></a>
+                            
+                            <p><a href="https://api.whatsapp.com/send?phone=5511989402988" target="_blank" rel="noopener">(11) 98940-2988</a><br>
+                            <span class="text-help">Online até as 22h Segunda a sexta</span></p>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="vehicle__contact">
+                    <p class="vehicle__text">Compartilhe com os amigos:</p>
+
+                    <ul class="vehicle__social">         
+                   
+                        <li><a href="whatsapp://send?text=<?=$URLSITE?>/veiculo/<?=$veiculo[0]->alias?>/<?=$veiculo[0]->idVeiculo?>" rel="noopener" target="_blank"><img src="<?=$URLSITE?>/page/assets/img/icons/whatsapp.svg" alt="Compartilhar no WhatsApp"></a></li>
+                        
+                        <li><a href="https://twitter.com/home?status=<?=$URLSITE?>/veiculo/<?=$veiculo[0]->alias?>/<?=$veiculo[0]->idVeiculo?>" rel="noopener" target="_blank"><img src="<?=$URLSITE?>/page/assets/img/twitter.jpg" alt="Compartilhar no Twitter"></a></li>
+                        
+                        <li><a href="https://www.facebook.com/sharer/sharer.php?u=<?=$URLSITE?>/veiculo/<?=$veiculo[0]->alias?>/<?=$veiculo[0]->idVeiculo?>" rel="noopener" target="_blank"><img src="<?=$URLSITE?>/page/assets/img/icons/facebook.svg" alt="Like no Facebook"></a></li>
+                        
+                        <li><a href="https://www.linkedin.com/shareArticle?mini=true&url=<?=$URLSITE?>/veiculo/<?=$veiculo[0]->alias?>/<?=$veiculo[0]->idVeiculo?>" rel="noopener" target="_blank"><img src="<?=$URLSITE?>/page/assets/img/icons/linkedin.svg" alt="Compartilhar no LinkedIn"></a></li>
+                    
+                    </ul>
+                </div>
+                
+            </div>
+          </div>
+        </div>
+      </section>
+    <?php  if (count($veiculosRelacionados)> 0) { ?>
+      <section class="section similar">
+        <div class="container">
+          <h2 class="section__title">CARROS SIMILARES QUE VOCÊ PODE GOSTAR</h2>
+          <div class="grid">
+              <div class="grid">
+                  <div class="grid__content">
+                      
+                      <?php
+						//Seleciona veciculos destacados
+						for($re=0;$re<count($veiculosRelacionados);$re++){ 
+							
+							$rowRelacionado = $veiculosRelacionados[$re]; 	
+							
+							$marca 			= DAOFactory::getMarcaDAO()->load($rowRelacionado->idMarca);
+							$transmissao 	= DAOFactory::getTransmissaoDAO()->load($rowRelacionado->idTransmissao);
+							$categoria	 	= DAOFactory::getVeiculoCategoriaDAO()->load($rowRelacionado->idVeiculoCategoria);
+							$capa 			= DAOFactory::getAlbumMidiaDAO()->queryCondList(' idAlbum="'.$rowRelacionado->idAlbum.'" ORDER BY ordem ASC LIMIT 1 '); 
+						
+						?>
+                      
+							<a href="/veiculo/<?=$rowRelacionado->alias?>/<?=$rowRelacionado->idVeiculo?>" class="grid__item car wow fadeIn" data-wow-delay=".5s">
+                                    <div class="car__img" style="background-image: url(<?=$URLSITE?>/page/assets/img/albuns/album_<?=$rowRelacionado->idAlbum?>/<?=$capa[0]->file?>);"></div>
+                                    <div class="car__detail">
+                                      <p><?=$marca->nome?> <?=$rowRelacionado->modelo?> <?=$rowRelacionado->anoFabricacao?>/<?=$rowRelacionado->anoModelo?></p>
+                                    </div>
+                                 <span class="button button--large">conferir</span>
+                            </a>
+                                
+                      <?php } ?>
+                  </div>
+                  <footer class="grid__footer">
+                      <a href="/estoque" class="button wow fadeIn" data-wow-delay="1.5s">conferir todo nosso estoque</a>
+                  </footer>
+              </div>
+
+            <footer class="grid__footer"></footer>
+          </div>
+        </div>
+      </section>
+    <?php } ?>
+    </div>
+

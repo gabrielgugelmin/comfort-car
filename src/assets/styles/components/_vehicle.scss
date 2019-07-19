@@ -1,12 +1,12 @@
 .vehicle {
   &__detail {
     position: relative;
-    margin: 50px 0;
+    margin: 20px 0 50px 0;
     padding-right: 15px;
-    max-height: 400px;
+    //     max-height: 400px;
 
     @include media(">=desktop") {
-      max-height: 740px;
+      //       max-height: 740px;
     }
 
     li {
@@ -21,7 +21,65 @@
     }
 
     span {
-      font-weight: fw("regular");
+      font-weight: 200;
+    }
+  }
+
+  &__social {
+    display: flex;
+    flex-direction: row;
+    // justify-content: space-between;
+    margin-bottom: 20px;
+
+    @include media(">=desktop") {
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 0;
+    }
+
+    li {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: 16px;
+      font-family: $font-title;
+      font-weight: bold;
+      margin-bottom: 15px;
+
+      a {
+        color: #000000 !important;
+      }
+
+      p {
+        line-height: 23px;
+        font-size: 15px;
+      }
+
+      &:first-child {
+        margin-right: 15px;
+      }
+
+      @include media(">=desktop") {
+        font-size: 24px;
+        margin-bottom: 35px;
+
+        &:first-child {
+          margin-right: 10px;
+        }
+      }
+
+      @include media(">=larger") {
+        font-size: 30px;
+      }
+    }
+
+    img {
+      margin-right: 6px;
+      width: 24px;
+
+      @include media(">=desktop") {
+        width: 38px;
+      }
     }
   }
 
@@ -43,8 +101,17 @@
       align-items: center;
       font-size: 16px;
       font-family: $font-title;
-      font-weight: fw("bold");
+      font-weight: bold;
       margin-bottom: 15px;
+
+      a {
+        color: #000000 !important;
+      }
+
+      p {
+        line-height: 23px;
+        font-size: 25px;
+      }
 
       &:first-child {
         margin-right: 15px;
@@ -121,6 +188,7 @@
   @include media(">=desktop") {
     padding: 0 15px;
   }
+
   &__item {
     background-size: cover;
     background-repeat: no-repeat;

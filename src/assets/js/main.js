@@ -4,6 +4,35 @@ $(function() {
     disableScroll: true
   });
 
+  var didScroll;
+  var lastScrollTop = 0;
+  var offset = 5;
+  var contactHeight = $(".contact").outerHeight();
+
+  $(window).scroll(function() {
+    didScroll = true;
+  });
+
+  setInterval(function() {
+    if (didScroll) {
+      hasScrolled();
+      didScroll = false;
+    }
+  }, 100);
+
+  function hasScrolled() {
+    var st = $(this).scrollTop();
+
+    if (Math.abs(lastScrollTop - st) <= offset) return;
+
+    if (st > lastScrollTop && st > contactHeight) {
+      $(".contact").removeClass("contact--down");
+    } else if (st + $(window).height() < $(document).height()) {
+      $(".contact").addClass("contact--down");
+    }
+    lastScrollTop = st;
+  }
+
   // menu
   $(".js-open-menu").on("click", function(e) {
     e.preventDefault();
@@ -79,6 +108,7 @@ $(function() {
   $(".js-slider-oportunidades").slick({
     arrows: false,
     dots: false,
+    autoplay: true,
     mobileFirst: true,
     responsive: [
       {
@@ -136,7 +166,7 @@ $(function() {
       {
         breakpoint: 991,
         settings: {
-          slidesToShow: 5,
+          slidesToShow: 4,
           slidesToScroll: 1
         }
       }
@@ -169,35 +199,38 @@ $(function() {
 
   var produtosArray = "";
 
-  /*$.ajax({
-    url: "/assets/json/busca.php",
+  $.ajax({
+    url:
+      "https://" +
+      window.location.host +
+      "/page/assets/json/busca-veiculos.php",
     dataType: "json",
     async: false,
     success: function(data) {
       produtosArray = data;
     }
-  });*/
+  });
 
-  var produtosArray = [
-    { value: "Linde Werdelin", data: "linde-werdelin" },
-    { value: "Jaeger-Lecoutre", data: "jaegerlecoutre" },
-    { value: "Breitling", data: "breitling" },
-    { value: "Jaeger-Lecoutre", data: "jaegerlecoutre" },
-    { value: "Hublot", data: "hublot" },
-    { value: "Panerai", data: "panerai" },
-    { value: "IWC", data: "iwc" },
-    { value: "Rolex", data: "rolex" },
-    { value: "Breitling", data: "breitling" },
-    { value: "IWC", data: "iwc" },
-    { value: "Rolex", data: "rolex" }
-  ];
+  //   var produtosArray = [{"value":"Linde Werdelin","data":"linde-werdelin"},{"value":"Jaeger-Lecoutre","data":"jaegerlecoutre"},{"value":"Breitling","data":"breitling"},{"value":"Jaeger-Lecoutre","data":"jaegerlecoutre"},{"value":"Hublot","data":"hublot"},{"value":"Panerai","data":"panerai"},{"value":"IWC","data":"iwc"},{"value":"Rolex","data":"rolex"},{"value":"Breitling","data":"breitling"},{"value":"IWC","data":"iwc"},{"value":"Rolex","data":"rolex"}];
 
   // https://github.com/devbridge/jQuery-Autocomplete
   $(".search__input").autocomplete({
     lookup: produtosArray,
     onSelect: function(suggestion) {
       //alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
-      window.location.href = "/produto/" + suggestion.data;
+      window.location.href = "/veiculo/" + suggestion.link;
+    },
+    response: function(event, ui) {
+      ui.content.push({
+        label:
+          "<a href='/estoque' class='button button--orange' />Ver estoque completo</a>",
+        button: true
+      });
+    },
+    select: function(event, ui) {
+      if (ui.item.button) {
+        event.preventDefault();
+      }
     },
     appendTo: ".search__result",
     onSearchComplete: function() {
@@ -231,6 +264,170 @@ $(function() {
       // envia o formulario
       // this.submit();
       MicroModal.show("sucesso");
+    }
+  });
+
+  /* FORM Avaliacao */
+  $("#formAvaliacao").submit(function(e) {
+    e.preventDefault();
+    var qtdErro = 0;
+    $(this)
+      .find("[data-validate=true]")
+      .each(function() {
+        var value = $.trim(
+          $(this)
+            .find("input, select, textarea")
+            .val()
+        );
+        if (!value.length > 0) {
+          $(this).addClass("error");
+          qtdErro++;
+        } else {
+          $(this).removeClass("error");
+        }
+      });
+    if (qtdErro == 0) {
+      return $.ajax({
+        type: "POST",
+        url: "/page/assets/ajax/avaliacao-digital.php",
+        data: $(this).serialize(),
+        success: function(data) {
+          if (data === "success") {
+            // Limpa o form
+            $("#formAvaliacao").trigger("reset");
+
+            window.location.href =
+              "https://" + window.location.host + "/obrigado-avaliacao";
+          } else {
+            console.log("Erro ao tentar enviar mensagem: " + data);
+          }
+        }
+      });
+    } else {
+      console.log("Erro ao tentar enviar mensagem. Tente novamente.");
+    }
+  });
+
+  /* FORM Contato */
+  $("#formContato").submit(function(e) {
+    e.preventDefault();
+    var qtdErro = 0;
+    $(this)
+      .find("[data-validate=true]")
+      .each(function() {
+        var value = $.trim(
+          $(this)
+            .find("input, textarea")
+            .val()
+        );
+        if (!value.length > 0) {
+          $(this).addClass("error");
+          qtdErro++;
+        } else {
+          $(this).removeClass("error");
+        }
+      });
+    if (qtdErro == 0) {
+      return $.ajax({
+        type: "POST",
+        url: "/page/assets/ajax/contato.php",
+        data: $(this).serialize(),
+        success: function(data) {
+          if (data === "success") {
+            // Limpa o form
+            $("#formContato").trigger("reset");
+
+            window.location.href =
+              "https://" + window.location.host + "/obrigado-pelo-contato";
+          } else {
+            console.log("Erro ao tentar enviar mensagem: " + data);
+          }
+        }
+      });
+    } else {
+      console.log("Erro ao tentar enviar mensagem. Tente novamente.");
+    }
+  });
+
+  /* FORM PROPOSTA */
+  $("#formProposta").submit(function(e) {
+    e.preventDefault();
+    var qtdErro = 0;
+    $(this)
+      .find("[data-validate=true]")
+      .each(function() {
+        var value = $.trim(
+          $(this)
+            .find("input, textarea")
+            .val()
+        );
+        if (!value.length > 0) {
+          $(this).addClass("error");
+          qtdErro++;
+        } else {
+          $(this).removeClass("error");
+        }
+      });
+    if (qtdErro == 0) {
+      return $.ajax({
+        type: "POST",
+        url: "/page/assets/ajax/proposta.php",
+        data: $(this).serialize(),
+        success: function(data) {
+          if (data === "success") {
+            // Limpa o form
+            $("#formProposta").trigger("reset");
+
+            window.location.href =
+              "https://" + window.location.host + "/obrigado-proposta";
+          } else {
+            console.log("Erro ao tentar enviar mensagem: " + data);
+          }
+        }
+      });
+    } else {
+      console.log("Erro ao tentar enviar mensagem. Tente novamente.");
+    }
+  });
+
+  /* FORM Avaliacao */
+  $("#formNewsletter").submit(function(e) {
+    e.preventDefault();
+    var qtdErro = 0;
+    $(this)
+      .find("[data-validate=true]")
+      .each(function() {
+        var value = $.trim(
+          $(this)
+            .find("input, select, textarea")
+            .val()
+        );
+        if (!value.length > 0) {
+          $(this).addClass("error");
+          qtdErro++;
+        } else {
+          $(this).removeClass("error");
+        }
+      });
+    if (qtdErro == 0) {
+      return $.ajax({
+        type: "POST",
+        url: "/page/assets/ajax/newsletter.php",
+        data: $(this).serialize(),
+        success: function(data) {
+          if (data === "success") {
+            // Limpa o form
+            $("#formNewsletter").trigger("reset");
+
+            window.location.href =
+              "https://" + window.location.host + "/obrigado-newsletter";
+          } else {
+            console.log("Erro ao tentar enviar mensagem: " + data);
+          }
+        }
+      });
+    } else {
+      console.log("Erro ao tentar enviar mensagem. Tente novamente.");
     }
   });
 
@@ -274,7 +471,7 @@ $(function() {
     getItems();
   }
 
-  new WOW().init();
+  //new WOW().init();
 
   function initIsotope() {
     var qsRegex;
@@ -318,7 +515,7 @@ $(function() {
       }
     });
 
-    var initShow = $(".js-grid").data("init-show") || 6; // Número de itens exibidos ao carregar
+    var initShow = $(".js-grid").data("init-show") || 24; // Número de itens exibidos ao carregar
     var counter = initShow; // Número de itens a serem carregados quando clicar no botão Carregar Mais
     var iso = $container.data("isotope"); // Instância do Isotope
     var footer = $(".grid__footer");
@@ -373,18 +570,55 @@ $(function() {
 
     // Filtra os itens pela Marca
     $("#marcas").on("change", function() {
+      $(".modelo-option").addClass("hidden");
+      $("#modelos option:selected").prop("selected", false);
+      modelosFilter = "*";
       marcasFilter = this.value;
+
       loadMore(initShow);
       $container.isotope();
       const marca = this.value.replace(".", "");
-      loadModelos(marca);
+
+      $(".modelo-marca-" + marca).removeClass("hidden");
+
+      loadMore(initShow);
+      //loadModelos(marca);
     });
+
+    var query_string = {};
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+      var pair = vars[i].split("=");
+      // If first entry with this name
+      if (typeof query_string[pair[0]] === "undefined") {
+        query_string[pair[0]] = decodeURIComponent(pair[1]);
+        // If second entry with this name
+      } else if (typeof query_string[pair[0]] === "string") {
+        var arr = [query_string[pair[0]], decodeURIComponent(pair[1])];
+        query_string[pair[0]] = arr;
+        // If third or later entry with this name
+      } else {
+        query_string[pair[0]].push(decodeURIComponent(pair[1]));
+      }
+    }
+
+    //Veriavel com categoria
+    var marcaQuery = query_string.marca;
+
+    if (marcaQuery) {
+      marcasFilter = "." + marcaQuery;
+      $("#marcas").val(marcasFilter);
+      $container.isotope();
+      loadMore(initShow);
+    }
 
     // Filtra os itens pelo Modelo
     $("#modelos").on("change", function() {
       modelosFilter = this.value;
       loadMore(initShow);
       $container.isotope();
+      loadMore(initShow);
     });
 
     // Filtra os itens por Ano
@@ -440,11 +674,18 @@ $(function() {
 
   function getItems() {
     var contentToLoad = $(".js-grid").data("load");
-    $.getJSON("/assets/json/" + contentToLoad + ".json", function(data) {})
+    $.getJSON(
+      "https://" +
+        window.location.host +
+        "/page/assets/json/" +
+        contentToLoad +
+        ".php",
+      function(data) {}
+    )
       .fail(function(data) {})
       .done(function(data) {
         $.each(data, function(index, item) {
-          if (item.id) {
+          if (item.idVeiculo) {
             // console.log(item);
             var $box = getItemLayout(item, contentToLoad);
           }
@@ -456,28 +697,34 @@ $(function() {
   }
 });
 
-function loadModelos(marca) {
+/*
+function loadModelos (marca) {
   // Esse json deve retornar os modelos da marca recebida via parametro
-  $.getJSON("/assets/json/modelos.json", function(data) {})
-    .fail(function(data) {})
-    .done(function(data) {
+  $.getJSON("https://" + window.location.host + "/page/assets/json/modelos.json", function (data) {})
+    .fail(function (data) {
+    }).done(function (data) {
       $("#modelos").empty();
-      $.each(data, function(index, item) {
-        $("#modelos").append(
-          `<option value=".${item.value}">${item.title}</option>`
-        );
+      $.each(data, function (index, item) {
+        $("#modelos").append(`<option value=".${item.value}">${item.title}</option>`);
       });
     });
 }
+*/
 
 function getItemLayout(item, contentToLoad) {
-  if (contentToLoad === "cars") {
-    return `<a href="veiculo.html" class="grid__item car wow fadeIn ${slugify(
-      item.brand
-    )} ${slugify(item.modelo)} ${slugify(item.ano)}" data-valor=${item.preco}>
-    <div class="car__img" style="background-image: url(${item.img})"></div>
+  if (contentToLoad === "showroom") {
+    return `<a href="/veiculo/${item.alias}/${
+      item.idVeiculo
+    }" class="grid__item car wow fadeIn ${slugify(item.idMarca)} ${slugify(
+      item.modelo
+    )} ${slugify(item.anoModelo)}" data-valor=${item.preco}>
+    <div class="car__img" style="background-image: url(page/assets/img/albuns/album_${
+      item.idAlbum
+    }/${item.capa})"></div>
     <div class="car__detail">
-      <p>${item.title}</p>
+      <p>${item.idMarca} ${item.modelo} ${item.anoFabricacao}/${
+      item.anoModelo
+    }</p>
     </div>
     <span class="button button--large">conferir</span>
   </a>`;
