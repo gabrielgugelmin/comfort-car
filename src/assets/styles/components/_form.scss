@@ -61,7 +61,8 @@
       }
 
       select#{&} {
-        background: right 10px center / 16px no-repeat url(../img/sort-down.svg) transparent;
+        background: right 10px center / 16px no-repeat url(../img/sort-down.svg)
+          transparent;
         color: color(mono, black);
         font-style: italic;
         font-weight: fw("regular");
@@ -127,16 +128,22 @@
   $checkbox-bg-color-checked: transparent;
   $checkbox-border-color-checked: $checkbox-bg-color-checked;
   $checkbox-bg-color-unchecked: transparent;
-  $checkbox-border-color-unchecked:  color(mono, black);
+  $checkbox-border-color-unchecked: color(mono, black);
 
   $radio-checked-color: $checkbox-bg-color-checked;
   $radio-unchecked-color: $checkbox-border-color-unchecked;
 
-
   .form__checkbox {
     display: none;
 
-    @mixin checkbox-structure($width: 44px, $height: 44px, $top: -8px, $left: '', $border-color: '', $background-color: '') {
+    @mixin checkbox-structure(
+      $width: 22px,
+      $height: 22px,
+      $top: 4px,
+      $left: "",
+      $border-color: "",
+      $background-color: ""
+    ) {
       content: "";
       height: $height;
       position: absolute;
@@ -144,38 +151,56 @@
       top: $top;
       width: $width;
 
-      @if $border-color!='' {
+      @if $border-color!= "" {
         border: 1px solid $border-color;
       }
 
-      @if $background-color!='' {
+      @if $background-color!= "" {
         background-color: $background-color;
       }
 
-      transition: .2s;
+      transition: 0.2s;
+
+      @include media(">=tablet") {
+        height: 44px;
+        width: 44px;
+        top: -8px;
+      }
     }
 
     &:not(:checked) + label::before {
-      @include checkbox-structure($border-color: color(mono, black), $background-color: $checkbox-bg-color-unchecked);
+      @include checkbox-structure(
+        $border-color: color(mono, black),
+        $background-color: $checkbox-bg-color-unchecked
+      );
 
       left: 0;
     }
 
     &:checked + label {
       &::before {
-        @include checkbox-structure($border-color: color(mono, black), $background-color: $checkbox-bg-color-checked);
+        @include checkbox-structure(
+          $border-color: color(mono, black),
+          $background-color: $checkbox-bg-color-checked
+        );
 
         left: 0;
       }
 
       &::after {
         @include checkbox-structure($width: 0, $height: 0);
-        animation: fade-in .25s;
+        animation: fade-in 0.25s;
         color: color(orange, flamingo);
         content: "\2713";
-        font-size: 26px;
-        left: 12px;
-        top: 0;
+        font-size: 16px;
+        left: 5px;
+        top: 3px;
+
+        @include media(">=tablet") {
+          font-size: 26px;
+          left: 12px;
+          top: 0;
+        }
       }
     }
 
@@ -208,8 +233,15 @@
       cursor: pointer;
       font-size: 16px;
       font-weight: fw("light");
-      padding-left: 60px;
+      padding-left: 30px;
       position: relative;
+      padding-right: 15px;
+      display: block;
+      word-break: break-word;
+
+      @include media(">=tablet") {
+        padding-left: 60px;
+      }
 
       @include media(">=larger") {
         font-size: 20px;
@@ -225,7 +257,6 @@
     }
   }
 
-
   .form__radio {
     display: none;
 
@@ -239,7 +270,6 @@
       top: -4px;
       width: 15px;
     }
-
 
     &:not(:checked) + label::before {
       @include radio-structure($radio-unchecked-color);
@@ -255,7 +285,7 @@
 
         background-color: $radio-checked-color;
         transform: scale(0.4);
-        animation: fade-in .5s;
+        animation: fade-in 0.5s;
       }
     }
 
@@ -266,9 +296,12 @@
     }
   }
 
-
   @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }

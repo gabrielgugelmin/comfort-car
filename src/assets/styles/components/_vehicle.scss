@@ -72,6 +72,14 @@
         width: 38px;
       }
     }
+
+    &--tel {
+      flex-direction: column;
+
+      @include media(">=desktop") {
+        flex-direction: row;
+      }
+    }
   }
 
   &__text {
@@ -110,6 +118,9 @@
     margin-bottom: 30px;
   }
 
+  @include media(">=desktop") {
+    padding: 0 15px;
+  }
   &__item {
     background-size: cover;
     background-repeat: no-repeat;
@@ -180,4 +191,3 @@
     }
   }
 }
-
