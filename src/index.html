@@ -46,7 +46,7 @@
         <ul class="menu">
           <li class="menu__item"><a href="estoque.html" class="menu__link">Estoque</a></li>
           <li class="menu__item"><a href="#!" class="menu__link js-scroll">Comprar</a></li>
-          <li class="menu__item"><a href="#!" class="menu__link" data-micromodal-trigger="avaliacao-digital">Vender</a></li>
+          <li class="menu__item"><a href="#!" class="menu__link" data-toggle="modal" data-target="#modalVender">Vender</a></li>
           <li class="menu__item"><a href="#!" class="menu__link js-scroll">Consignação</a></li>
           <li class="menu__item"><a href="blog.html" class="menu__link">Blog</a></li>
           <li class="menu__item"><a href="#!" class="menu__link" data-micromodal-trigger="contato">Contato</a></li>
@@ -558,6 +558,89 @@
             </div>
           </div>
         </main>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalVender" tabindex="-1" role="dialog" aria-labelledby="modalVenderTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal__title">Avaliação Digital</div>
+          <p>Preencha o formulário que faremos uma avaliação justa e rapidamente entraremos em contato.</p>
+          <form class="form" action="">
+            <div class="form__control">
+              <div class="checkbox">
+                <input id="avaliacao-anos" type="checkbox" class="form__checkbox"/>
+                <label for="avaliacao-anos">Meu carro possui até 4 anos da data de fabricação</label>
+              </div>
+            </div>
+            <div class="form__control">
+              <div class="checkbox">
+                <input id="avaliacao-valor" type="checkbox" class="form__checkbox"/>
+                <label for="avaliacao-valor">Meu carro vale mais de R$ 50.000,00</label>
+              </div>
+            </div>
+            <div class="form__control">
+              <div class="checkbox">
+                <input id="avaliacao-km" type="checkbox" class="form__checkbox"/>
+                <label for="avaliacao-km">Meu carro possui menos de 50 km redodos</label>
+              </div>
+            </div>
+            <div class="form__control">
+              <input type="text" class="form__input" placeholder="Nome">
+            </div>
+            <div class="form__control">
+              <input type="email" class="form__input" placeholder="E-mail">
+            </div>
+            <div class="form__control">
+              <input type="tel" class="form__input" placeholder="Telefone">
+            </div>
+            <div class="form__control">
+              <select class="form__input">
+                <option value="" selected disabled>Marca</option>
+                <option value="mercedes-benz">mercedes-benz</option>
+                <option value="audi">audi</option>
+                <option value="ferrari">ferrari</option>
+              </select>
+            </div>
+            <div class="form__control">
+              <select class="form__input">
+                <option value="" selected disabled>Modelo</option>
+                <option value="modelo1">modelo1</option>
+                <option value="modelo2">modelo2</option>
+                <option value="modelo3">modelo3</option>
+              </select>
+            </div>
+            <div class="form__control">
+              <input type="text" class="form__input" placeholder="Cor">
+            </div>
+            <div class="form__control">
+              <input type="text" class="form__input" placeholder="Ano/Modelo">
+            </div>
+            <div class="form__control">
+              <input type="text" class="form__input" placeholder="KM">
+            </div>
+            <div class="form__control">
+              <input type="text" class="form__input" placeholder="Motor">
+            </div>
+            <div class="form__control">
+              <input type="text" class="form__input" placeholder="Câmbio">
+            </div>
+
+            <div class="form__control">
+              <textarea class="form__input" placeholder="Observações, opcionais e detalhes importantes"></textarea>
+            </div>
+            <div class="form__control form__submit">
+              <button type="submit" class="button button--orange">enviar</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>

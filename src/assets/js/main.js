@@ -1,8 +1,49 @@
 $(function() {
   clickOutsideMenu();
   MicroModal.init({
-    disableScroll: true
+    disableScroll: true,
+    onShow: function() {
+      lockBody();
+    },
+    onClose: function() {
+      unlockBody();
+    }
   });
+
+  var $docEl = $("html, body");
+  var $wrap = $(".page-wrapper");
+  var scrollTop;
+
+  function lockBody() {
+    if (window.pageYOffset) {
+      scrollTop = window.pageYOffset;
+
+      $wrap.css({
+        top: -scrollTop
+      });
+    }
+
+    $docEl.css({
+      height: "100%",
+      overflow: "hidden"
+    });
+  }
+
+  function unlockBody() {
+    $docEl.css({
+      height: "",
+      overflow: ""
+    });
+
+    $wrap.css({
+      top: ""
+    });
+
+    window.scrollTo(0, scrollTop);
+    window.setTimeout(function() {
+      scrollTop = null;
+    }, 0);
+  }
 
   var didScroll;
   var lastScrollTop = 0;
@@ -263,7 +304,7 @@ $(function() {
     if (ok === required.length) {
       // envia o formulario
       // this.submit();
-      MicroModal.show("sucesso");
+      $('#modalSucesso').modal('show')
     }
   });
 
